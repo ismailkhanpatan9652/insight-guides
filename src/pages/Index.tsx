@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/articles/ArticleCard";
@@ -32,18 +33,66 @@ const features = [
 const Index = () => {
   const featuredArticles = articles.slice(0, 3);
   const recentArticles = articles.slice(3, 6);
+  const heroRef = useRef<HTMLElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-secondary/40 border-b border-border/50">
+      {/* Hero Section with Parallax */}
+      <section 
+        ref={heroRef}
+        className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-secondary/40 border-b border-border/50 min-h-[90vh] flex items-center"
+      >
+        {/* Parallax Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+          <div 
+            className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl"
+            style={{ transform: `translateY(${scrollY * 0.3}px) translateX(${scrollY * -0.1}px)` }}
+          />
+          <div 
+            className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
+            style={{ transform: `translateY(${scrollY * -0.2}px) translateX(${scrollY * 0.1}px)` }}
+          />
+          <div 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl"
+            style={{ transform: `translate(-50%, -50%) scale(${1 + scrollY * 0.0005})` }}
+          />
+          {/* Floating geometric shapes */}
+          <div 
+            className="absolute top-20 left-[20%] w-4 h-4 bg-primary/30 rounded-full"
+            style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+          />
+          <div 
+            className="absolute top-40 right-[30%] w-6 h-6 bg-accent/30 rotate-45"
+            style={{ transform: `translateY(${scrollY * 0.4}px) rotate(${45 + scrollY * 0.1}deg)` }}
+          />
+          <div 
+            className="absolute bottom-40 left-[40%] w-3 h-3 bg-secondary/50 rounded-full"
+            style={{ transform: `translateY(${scrollY * -0.3}px)` }}
+          />
+          <div 
+            className="absolute top-60 right-[15%] w-5 h-5 border-2 border-primary/30 rounded-full"
+            style={{ transform: `translateY(${scrollY * 0.35}px) scale(${1 + scrollY * 0.001})` }}
+          />
         </div>
-        <div className="container-wide py-20 md:py-32 relative z-10">
+        
+        <div 
+          className="container-wide py-20 md:py-32 relative z-10"
+          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+        >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="opacity-0 animate-slide-up-3d">
+            <div 
+              className="opacity-0 animate-slide-up-3d"
+              style={{ transform: `translateY(${scrollY * 0.05}px)` }}
+            >
               <span className="inline-block text-sm font-medium text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-6 animate-glow-pulse">
                 Independent Digital Insights
               </span>
@@ -68,15 +117,22 @@ const Index = () => {
                 </Link>
               </div>
             </div>
-            <div className="relative opacity-0 animate-tilt-in stagger-2 perspective-1000">
+            <div 
+              className="relative opacity-0 animate-tilt-in stagger-2 perspective-1000"
+              style={{ transform: `translateY(${scrollY * -0.1}px) rotateX(${scrollY * 0.02}deg)` }}
+            >
               <div className="aspect-video rounded-2xl overflow-hidden shadow-card transform-3d hover-3d-lift">
                 <img 
                   src="/images/hero-bg.jpg" 
                   alt="Professional content publishing workspace" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300"
+                  style={{ transform: `scale(${1 + scrollY * 0.0003})` }}
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-card border border-border/50 hidden md:block opacity-0 animate-flip-in stagger-4">
+              <div 
+                className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-card border border-border/50 hidden md:block opacity-0 animate-flip-in stagger-4"
+                style={{ transform: `translateY(${scrollY * -0.15}px)` }}
+              >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
                     <FileText className="w-5 h-5 text-primary" />
