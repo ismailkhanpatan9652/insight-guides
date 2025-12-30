@@ -13,59 +13,61 @@
 @layer base {
   :root {
     /* Core backgrounds */
-    --background: 210 20% 99%;
-    --foreground: 220 25% 15%;
+    --background: 240 20% 98%;
+    --foreground: 250 30% 12%;
 
     /* Card surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 15%;
+    --card-foreground: 250 30% 12%;
 
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 15%;
+    --popover-foreground: 250 30% 12%;
 
-    /* Primary - Deep Navy Blue (Trust & Professionalism) */
-    --primary: 220 60% 25%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Deep Violet/Purple (Modern & Creative) */
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Soft Sage (Growth & Reliability) */
-    --secondary: 160 25% 92%;
-    --secondary-foreground: 160 35% 25%;
+    /* Secondary - Soft Teal (Fresh & Professional) */
+    --secondary: 180 45% 92%;
+    --secondary-foreground: 180 60% 25%;
 
     /* Muted elements */
-    --muted: 210 15% 95%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 240 15% 95%;
+    --muted-foreground: 240 10% 45%;
 
-    /* Accent - Warm Amber (Subtle highlights) */
-    --accent: 35 85% 55%;
-    --accent-foreground: 35 90% 15%;
+    /* Accent - Coral/Orange (Warm highlights) */
+    --accent: 15 90% 60%;
+    --accent-foreground: 15 90% 15%;
 
     /* Destructive */
     --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
     /* Borders & inputs */
-    --border: 210 20% 88%;
-    --input: 210 20% 88%;
-    --ring: 220 60% 35%;
+    --border: 240 20% 90%;
+    --input: 240 20% 90%;
+    --ring: 262 83% 58%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     /* Sidebar */
-    --sidebar-background: 210 20% 97%;
-    --sidebar-foreground: 220 25% 25%;
-    --sidebar-primary: 220 60% 25%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 160 25% 92%;
-    --sidebar-accent-foreground: 160 35% 25%;
-    --sidebar-border: 210 20% 90%;
-    --sidebar-ring: 220 60% 35%;
+    --sidebar-background: 240 20% 97%;
+    --sidebar-foreground: 250 30% 20%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 180 45% 92%;
+    --sidebar-accent-foreground: 180 60% 25%;
+    --sidebar-border: 240 20% 92%;
+    --sidebar-ring: 262 83% 58%;
 
-    /* Custom tokens for Niarticles */
-    --hero-gradient: linear-gradient(135deg, hsl(220 60% 25%) 0%, hsl(200 50% 35%) 100%);
-    --card-shadow: 0 4px 20px -4px hsl(220 25% 15% / 0.08);
-    --card-shadow-hover: 0 8px 30px -4px hsl(220 25% 15% / 0.12);
-    --text-gradient: linear-gradient(135deg, hsl(220 60% 25%) 0%, hsl(160 35% 35%) 100%);
+    /* Custom tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(200 80% 50%) 50%, hsl(180 70% 45%) 100%);
+    --card-shadow: 0 8px 32px -8px hsl(262 83% 58% / 0.15);
+    --card-shadow-hover: 0 20px 48px -12px hsl(262 83% 58% / 0.25);
+    --text-gradient: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(200 80% 50%) 100%);
+    --glow-primary: 0 0 40px hsl(262 83% 58% / 0.4);
+    --glow-accent: 0 0 40px hsl(15 90% 60% / 0.3);
     
     /* Typography scale */
     --font-display: 'Lora', Georgia, serif;
@@ -73,46 +75,46 @@
   }
 
   .dark {
-    --background: 220 25% 8%;
-    --foreground: 210 20% 95%;
+    --background: 250 30% 6%;
+    --foreground: 240 20% 95%;
 
-    --card: 220 25% 10%;
-    --card-foreground: 210 20% 95%;
+    --card: 250 30% 8%;
+    --card-foreground: 240 20% 95%;
 
-    --popover: 220 25% 10%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 250 30% 8%;
+    --popover-foreground: 240 20% 95%;
 
-    --primary: 200 50% 60%;
-    --primary-foreground: 220 25% 8%;
+    --primary: 262 83% 65%;
+    --primary-foreground: 250 30% 6%;
 
-    --secondary: 160 20% 18%;
-    --secondary-foreground: 160 25% 85%;
+    --secondary: 180 35% 15%;
+    --secondary-foreground: 180 40% 85%;
 
-    --muted: 220 20% 15%;
-    --muted-foreground: 210 15% 60%;
+    --muted: 250 25% 12%;
+    --muted-foreground: 240 15% 60%;
 
-    --accent: 35 75% 50%;
-    --accent-foreground: 35 90% 95%;
+    --accent: 15 85% 55%;
+    --accent-foreground: 15 90% 95%;
 
     --destructive: 0 60% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 200 50% 60%;
+    --border: 250 25% 15%;
+    --input: 250 25% 15%;
+    --ring: 262 83% 65%;
 
-    --sidebar-background: 220 25% 10%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 200 50% 60%;
-    --sidebar-primary-foreground: 220 25% 8%;
-    --sidebar-accent: 160 20% 18%;
-    --sidebar-accent-foreground: 160 25% 85%;
-    --sidebar-border: 220 20% 15%;
-    --sidebar-ring: 200 50% 60%;
+    --sidebar-background: 250 30% 8%;
+    --sidebar-foreground: 240 20% 90%;
+    --sidebar-primary: 262 83% 65%;
+    --sidebar-primary-foreground: 250 30% 6%;
+    --sidebar-accent: 180 35% 15%;
+    --sidebar-accent-foreground: 180 40% 85%;
+    --sidebar-border: 250 25% 12%;
+    --sidebar-ring: 262 83% 65%;
 
-    --hero-gradient: linear-gradient(135deg, hsl(200 50% 35%) 0%, hsl(220 40% 25%) 100%);
-    --card-shadow: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
-    --card-shadow-hover: 0 8px 30px -4px hsl(0 0% 0% / 0.4);
+    --hero-gradient: linear-gradient(135deg, hsl(262 70% 45%) 0%, hsl(200 70% 40%) 50%, hsl(180 60% 35%) 100%);
+    --card-shadow: 0 8px 32px -8px hsl(0 0% 0% / 0.5);
+    --card-shadow-hover: 0 20px 48px -12px hsl(262 83% 58% / 0.3);
   }
 }
 
@@ -213,6 +215,34 @@
     animation: slideInLeft 0.5s ease-out forwards;
   }
 
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  .hover-3d-lift {
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+  }
+
+  .hover-3d-lift:hover {
+    transform: perspective(1000px) translateZ(20px) rotateX(2deg);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  .hover-3d-tilt:hover {
+    transform: perspective(800px) rotateY(5deg) rotateX(2deg) scale(1.02);
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -221,22 +251,22 @@
   @keyframes fadeInUp {
     from { 
       opacity: 0;
-      transform: translateY(20px);
+      transform: perspective(1000px) translateY(30px) translateZ(-50px);
     }
     to { 
       opacity: 1;
-      transform: translateY(0);
+      transform: perspective(1000px) translateY(0) translateZ(0);
     }
   }
 
   @keyframes slideInLeft {
     from { 
       opacity: 0;
-      transform: translateX(-20px);
+      transform: perspective(1000px) translateX(-30px) rotateY(10deg);
     }
     to { 
       opacity: 1;
-      transform: translateX(0);
+      transform: perspective(1000px) translateX(0) rotateY(0);
     }
   }
 }

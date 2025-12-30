@@ -36,11 +36,15 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/30 border-b border-border/50">
-        <div className="container-wide py-20 md:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-secondary/40 border-b border-border/50">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        </div>
+        <div className="container-wide py-20 md:py-32 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-up">
-              <span className="inline-block text-sm font-medium text-accent bg-accent/10 px-3 py-1 rounded-full mb-6">
+            <div className="opacity-0 animate-slide-up-3d">
+              <span className="inline-block text-sm font-medium text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-6 animate-glow-pulse">
                 Independent Digital Insights
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6">
@@ -52,30 +56,30 @@ const Index = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/insights">
-                  <Button size="lg" className="gap-2">
+                  <Button size="lg" className="gap-2 transition-all duration-300 hover:scale-105 hover:shadow-lg">
                     Explore Insights
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <Link to="/about">
-                  <Button variant="outline" size="lg">
+                  <Button variant="outline" size="lg" className="transition-all duration-300 hover:scale-105">
                     Learn About Us
                   </Button>
                 </Link>
               </div>
             </div>
-            <div className="relative animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-card">
+            <div className="relative opacity-0 animate-tilt-in stagger-2 perspective-1000">
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-card transform-3d hover-3d-lift">
                 <img 
                   src="/images/hero-bg.jpg" 
                   alt="Professional content publishing workspace" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-card border border-border/50 hidden md:block">
+              <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-card border border-border/50 hidden md:block opacity-0 animate-flip-in stagger-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                    <FileText className="w-5 h-5 text-secondary-foreground" />
+                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                    <FileText className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-foreground">Quality Content</p>
@@ -100,10 +104,10 @@ const Index = () => {
             {features.map((feature, index) => (
               <div 
                 key={feature.title}
-                className="bg-card p-6 rounded-xl border border-border/50 card-elevated animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="bg-card p-6 rounded-xl border border-border/50 opacity-0 animate-tilt-in perspective-1000 transform-3d hover-3d-lift"
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:animate-glow-pulse">
                   <feature.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-display text-lg font-semibold text-foreground mb-2">
