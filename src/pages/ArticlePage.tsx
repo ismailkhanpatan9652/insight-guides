@@ -3,8 +3,8 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { getArticleBySlug, articles } from "@/data/articles";
 import { ArticleCard } from "@/components/articles/ArticleCard";
+import { AffiliateButton } from "@/components/articles/AffiliateButton";
 import { ArrowLeft, Clock, Calendar, User } from "lucide-react";
-
 const ArticlePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getArticleBySlug(slug) : undefined;
@@ -97,6 +97,9 @@ const ArticlePage = () => {
               const lines = section.trim().split('\n');
               const isHeading = lines[0].startsWith('## ');
               
+              // Insert affiliate button after the 2nd or 3rd section for natural placement
+              const showButtonAfter = index === 2;
+              
               if (isHeading) {
                 const heading = lines[0].replace('## ', '');
                 const content = lines.slice(1).join('\n');
@@ -107,23 +110,29 @@ const ArticlePage = () => {
                     <div dangerouslySetInnerHTML={{ 
                       __html: formatContent(content) 
                     }} />
+                    {showButtonAfter && <AffiliateButton category={article.category} />}
                   </div>
                 );
               }
               
               return (
-                <div 
-                  key={index}
-                  dangerouslySetInnerHTML={{ 
-                    __html: formatContent(section) 
-                  }} 
-                />
+                <div key={index}>
+                  <div 
+                    dangerouslySetInnerHTML={{ 
+                      __html: formatContent(section) 
+                    }} 
+                  />
+                  {showButtonAfter && <AffiliateButton category={article.category} />}
+                </div>
               );
             })}
           </article>
 
+          {/* Second CTA at bottom */}
+          <AffiliateButton category={article.category} className="mt-8" />
+
           {/* Affiliate Disclosure */}
-          <div className="mt-12 p-6 bg-secondary/30 rounded-xl border border-border/50">
+          <div className="mt-8 p-6 bg-secondary/30 rounded-xl border border-border/50">
             <p className="text-sm text-muted-foreground">
               <strong className="text-foreground">Disclosure:</strong> Some links in this article 
               may be affiliate links. We may earn a commission if you make a purchase through 
