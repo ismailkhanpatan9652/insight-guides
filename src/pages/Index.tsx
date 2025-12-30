@@ -182,7 +182,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/how-it-works">
-              <Button size="lg" variant="outline" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
+              <Button size="lg" variant="secondary" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
                 How It Works
               </Button>
             </Link>
