@@ -85,8 +85,32 @@ export default {
           to: { opacity: "1" },
         },
         "fade-in-up": {
-          from: { opacity: "0", transform: "translateY(20px)" },
+          from: { opacity: "0", transform: "translateY(30px)" },
           to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0) rotateX(0)" },
+          "50%": { transform: "translateY(-10px) rotateX(2deg)" },
+        },
+        "tilt-in": {
+          from: { opacity: "0", transform: "perspective(1000px) rotateX(-15deg) translateY(30px)" },
+          to: { opacity: "1", transform: "perspective(1000px) rotateX(0) translateY(0)" },
+        },
+        "flip-in": {
+          from: { opacity: "0", transform: "perspective(1000px) rotateY(-30deg) translateX(-50px)" },
+          to: { opacity: "1", transform: "perspective(1000px) rotateY(0) translateX(0)" },
+        },
+        "zoom-rotate": {
+          from: { opacity: "0", transform: "scale(0.8) rotate(-5deg)" },
+          to: { opacity: "1", transform: "scale(1) rotate(0)" },
+        },
+        "slide-up-3d": {
+          from: { opacity: "0", transform: "perspective(1000px) translateZ(-100px) translateY(50px)" },
+          to: { opacity: "1", transform: "perspective(1000px) translateZ(0) translateY(0)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 20px hsl(262 83% 58% / 0.3)" },
+          "50%": { boxShadow: "0 0 40px hsl(262 83% 58% / 0.6)" },
         },
       },
       animation: {
@@ -94,6 +118,12 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "fade-in-up": "fade-in-up 0.6s ease-out forwards",
+        "float": "float 4s ease-in-out infinite",
+        "tilt-in": "tilt-in 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards",
+        "flip-in": "flip-in 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards",
+        "zoom-rotate": "zoom-rotate 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards",
+        "slide-up-3d": "slide-up-3d 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
       },
     },
   },
