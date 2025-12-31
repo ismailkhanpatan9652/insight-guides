@@ -5,6 +5,24 @@ import { getArticleBySlug, articles } from "@/data/articles";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { AffiliateButton } from "@/components/articles/AffiliateButton";
 import { ArrowLeft, Clock, Calendar, User } from "lucide-react";
+import { articleImages } from "@/assets/images";
+
+// Helper to get the image - prioritize new assets, fallback to public folder
+const getImageSrc = (imagePath?: string): string | undefined => {
+  if (!imagePath) return undefined;
+  
+  // Extract the image key from the path (e.g., "/images/personal-finance.jpg" -> "personal-finance")
+  const match = imagePath.match(/\/images\/([^.]+)\./);
+  if (match && match[1]) {
+    const key = match[1];
+    if (articleImages[key]) {
+      return articleImages[key];
+    }
+  }
+  
+  // Fallback to original path
+  return imagePath;
+};
 const ArticlePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getArticleBySlug(slug) : undefined;
@@ -81,7 +99,7 @@ const ArticlePage = () => {
         <div className="container-narrow">
           <div className="aspect-video rounded-2xl overflow-hidden shadow-card">
             <img 
-              src={article.image} 
+              src={getImageSrc(article.image)} 
               alt={article.title} 
               className="w-full h-full object-cover"
             />

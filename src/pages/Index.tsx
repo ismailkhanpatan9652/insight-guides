@@ -6,6 +6,7 @@ import { ArticleCard } from "@/components/articles/ArticleCard";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { articles } from "@/data/articles";
 import { ArrowRight, BookOpen, Shield, Users, FileText } from "lucide-react";
+import { heroBg } from "@/assets/images";
 
 const features = [
   {
@@ -123,8 +124,8 @@ const Index = () => {
             >
               <div className="aspect-video rounded-2xl overflow-hidden shadow-card transform-3d hover-3d-lift">
                 <img 
-                  src="/images/hero-bg.jpg" 
-                  alt="Professional content publishing workspace" 
+                  src={heroBg} 
+                  alt="Professional content publishing workspace"
                   className="w-full h-full object-cover transition-transform duration-300"
                   style={{ transform: `scale(${1 + scrollY * 0.0003})` }}
                 />
