@@ -1,6 +1,24 @@
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock, ArrowRight } from "lucide-react";
+import { articleImages } from "@/assets/images";
+
+// Helper to get the image - prioritize new assets, fallback to public folder
+const getImageSrc = (imagePath?: string): string | undefined => {
+  if (!imagePath) return undefined;
+  
+  // Extract the image key from the path (e.g., "/images/personal-finance.jpg" -> "personal-finance")
+  const match = imagePath.match(/\/images\/([^.]+)\./);
+  if (match && match[1]) {
+    const key = match[1];
+    if (articleImages[key]) {
+      return articleImages[key];
+    }
+  }
+  
+  // Fallback to original path
+  return imagePath;
+};
 
 export interface ArticleCardProps {
   slug: string;
@@ -30,7 +48,7 @@ export function ArticleCard({
               className={`bg-muted bg-cover bg-center transition-transform duration-700 group-hover:scale-110 ${
                 featured ? 'h-48 md:h-full' : 'h-48'
               }`}
-              style={{ backgroundImage: `url(${image})` }}
+              style={{ backgroundImage: `url(${getImageSrc(image)})` }}
             />
           </div>
         )}
