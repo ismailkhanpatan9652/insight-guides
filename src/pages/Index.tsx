@@ -6,7 +6,7 @@ import { ArticleCard } from "@/components/articles/ArticleCard";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { articles } from "@/data/articles";
 import { ArrowRight, BookOpen, Shield, Users, FileText } from "lucide-react";
-import { heroBg } from "@/assets/images";
+
 
 const features = [
   {
@@ -89,7 +89,7 @@ const Index = () => {
           className="container-wide py-20 md:py-32 relative z-10"
           style={{ transform: `translateY(${scrollY * 0.1}px)` }}
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl mx-auto text-center">
             <div 
               className="opacity-0 animate-slide-up-3d"
               style={{ transform: `translateY(${scrollY * 0.05}px)` }}
@@ -100,11 +100,11 @@ const Index = () => {
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6">
                 Informative Guides for the <span className="text-gradient">Digital Consumer</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
                 We publish independent guides and insights to help you understand digital services, 
                 evaluate options, and make informed decisions in today's complex digital marketplace.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 <Link to="/insights">
                   <Button size="lg" className="gap-2 transition-all duration-300 hover:scale-105 hover:shadow-lg">
                     Explore Insights
@@ -116,33 +116,6 @@ const Index = () => {
                     Learn About Us
                   </Button>
                 </Link>
-              </div>
-            </div>
-            <div 
-              className="relative opacity-0 animate-tilt-in stagger-2 perspective-1000"
-              style={{ transform: `translateY(${scrollY * -0.1}px) rotateX(${scrollY * 0.02}deg)` }}
-            >
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-card transform-3d hover-3d-lift">
-                <img 
-                  src={heroBg} 
-                  alt="Professional content publishing workspace"
-                  className="w-full h-full object-cover transition-transform duration-300"
-                  style={{ transform: `scale(${1 + scrollY * 0.0003})` }}
-                />
-              </div>
-              <div 
-                className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-card border border-border/50 hidden md:block opacity-0 animate-flip-in stagger-4"
-                style={{ transform: `translateY(${scrollY * -0.15}px)` }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                    <FileText className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-foreground">Quality Content</p>
-                    <p className="text-xs text-muted-foreground">Research-backed insights</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
