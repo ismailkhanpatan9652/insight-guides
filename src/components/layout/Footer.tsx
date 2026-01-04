@@ -30,7 +30,7 @@ export function Footer() {
                 <BookOpen className="w-5 h-5 text-primary-foreground" />
               </div>
               <span className="font-display text-xl font-semibold text-foreground">
-                Niarticles
+                Sohera
               </span>
             </Link>
             <p className="text-muted-foreground max-w-sm leading-relaxed mb-4">
@@ -87,7 +87,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} Niarticles. All rights reserved.
+              © {currentYear} Sohera. All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground">
               Independent insights for informed decisions
