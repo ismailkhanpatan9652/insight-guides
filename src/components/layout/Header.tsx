@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, BookOpen } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navigation = [
@@ -27,7 +27,7 @@ export function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
           <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center transition-transform group-hover:scale-105">
-            <BookOpen className="w-5 h-5 text-primary-foreground" />
+            <Globe className="w-5 h-5 text-primary-foreground" />
           </div>
           <span className="font-display text-xl font-semibold text-foreground">
             Sohera
