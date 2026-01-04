@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookOpen } from "lucide-react";
+import { Globe } from "lucide-react";
 
 const legalLinks = [
   { name: "Privacy Policy", href: "/privacy-policy" },
@@ -27,7 +27,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-primary-foreground" />
+                <Globe className="w-5 h-5 text-primary-foreground" />
               </div>
               <span className="font-display text-xl font-semibold text-foreground">
                 Sohera
