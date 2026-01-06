@@ -10,6 +10,7 @@ export interface Article {
   author: string;
   metaDescription?: string;
   keywords?: string[];
+  affiliateUrl?: string;
 }
 
 export const articles: Article[] = [

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 
 interface AffiliateButtonProps {
   category: string;
+  affiliateUrl?: string;
   className?: string;
 }
 
@@ -65,13 +66,14 @@ const getCTAText = (category: string): { text: string; subtext: string } => {
   };
 
   return ctaMap[category] || {
-    text: "Learn More",
+    text: "View Recommended Services",
     subtext: "Explore services related to this topic"
   };
 };
 
-export const AffiliateButton = ({ category, className = "" }: AffiliateButtonProps) => {
+export const AffiliateButton = ({ category, affiliateUrl, className = "" }: AffiliateButtonProps) => {
   const { text, subtext } = getCTAText(category);
+  const url = affiliateUrl || "#";
 
   return (
     <div className={`my-10 p-6 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl border border-border/50 text-center ${className}`}>
@@ -82,13 +84,9 @@ export const AffiliateButton = ({ category, className = "" }: AffiliateButtonPro
         className="group"
       >
         <a 
-          href="#" 
+          href={url} 
           target="_blank" 
           rel="noopener noreferrer sponsored"
-          onClick={(e) => {
-            // Placeholder - Replace # with actual affiliate link
-            // e.preventDefault(); // Uncomment when testing
-          }}
         >
           {text}
           <ExternalLink className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5" />
