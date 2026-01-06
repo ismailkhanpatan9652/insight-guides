@@ -128,7 +128,7 @@ const ArticlePage = () => {
                     <div dangerouslySetInnerHTML={{ 
                       __html: formatContent(content) 
                     }} />
-                    {showButtonAfter && <AffiliateButton category={article.category} />}
+                    {showButtonAfter && <AffiliateButton category={article.category} affiliateUrl={article.affiliateUrl} />}
                   </div>
                 );
               }
@@ -140,14 +140,14 @@ const ArticlePage = () => {
                       __html: formatContent(section) 
                     }} 
                   />
-                  {showButtonAfter && <AffiliateButton category={article.category} />}
+                  {showButtonAfter && <AffiliateButton category={article.category} affiliateUrl={article.affiliateUrl} />}
                 </div>
               );
             })}
           </article>
 
           {/* Second CTA at bottom */}
-          <AffiliateButton category={article.category} className="mt-8" />
+          <AffiliateButton category={article.category} affiliateUrl={article.affiliateUrl} className="mt-8" />
 
           {/* Affiliate Disclosure */}
           <div className="mt-8 p-6 bg-secondary/30 rounded-xl border border-border/50">
