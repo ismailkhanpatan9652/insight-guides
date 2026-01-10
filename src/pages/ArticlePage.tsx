@@ -6,6 +6,7 @@ import { ArticleCard } from "@/components/articles/ArticleCard";
 import { AffiliateButton } from "@/components/articles/AffiliateButton";
 import { ArrowLeft, Clock, Calendar, User } from "lucide-react";
 import { articleImages } from "@/assets/images";
+import { getAffiliateUrl } from "@/config/affiliateLinks";
 
 // Helper to get the image - prioritize new assets, fallback to public folder
 const getImageSrc = (imagePath?: string): string | undefined => {
@@ -26,6 +27,7 @@ const getImageSrc = (imagePath?: string): string | undefined => {
 const ArticlePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getArticleBySlug(slug) : undefined;
+  const affiliateUrl = slug ? getAffiliateUrl(slug) : "";
 
   if (!article) {
     return (
@@ -128,7 +130,7 @@ const ArticlePage = () => {
                     <div dangerouslySetInnerHTML={{ 
                       __html: formatContent(content) 
                     }} />
-                    {showButtonAfter && <AffiliateButton category={article.category} affiliateUrl={article.affiliateUrl} />}
+                    {showButtonAfter && <AffiliateButton category={article.category} affiliateUrl={affiliateUrl} />}
                   </div>
                 );
               }
@@ -140,14 +142,14 @@ const ArticlePage = () => {
                       __html: formatContent(section) 
                     }} 
                   />
-                  {showButtonAfter && <AffiliateButton category={article.category} affiliateUrl={article.affiliateUrl} />}
+                  {showButtonAfter && <AffiliateButton category={article.category} affiliateUrl={affiliateUrl} />}
                 </div>
               );
             })}
           </article>
 
           {/* Second CTA at bottom */}
-          <AffiliateButton category={article.category} affiliateUrl={article.affiliateUrl} className="mt-8" />
+          <AffiliateButton category={article.category} affiliateUrl={affiliateUrl} className="mt-8" />
 
           {/* Affiliate Disclosure */}
           <div className="mt-8 p-6 bg-secondary/30 rounded-xl border border-border/50">
