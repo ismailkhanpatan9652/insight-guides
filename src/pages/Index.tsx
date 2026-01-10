@@ -80,28 +80,12 @@ const Index = () => {
   const featuredArticles = articles.slice(0, 6);
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
   const { scrollYProgress } = useScroll();
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
   
   const heroOpacity = useTransform(smoothProgress, [0, 0.2], [1, 0]);
   const heroScale = useTransform(smoothProgress, [0, 0.2], [1, 0.95]);
   const heroY = useTransform(smoothProgress, [0, 0.3], [0, 100]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: (e.clientX - rect.left) / rect.width,
-          y: (e.clientY - rect.top) / rect.height,
-        });
-      }
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   const AnimatedSection = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
     const ref = useRef(null);
@@ -130,16 +114,15 @@ const Index = () => {
         >
           {/* Animated Gradient Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-            {/* Animated Mesh Gradient */}
+            {/* Static Mesh Gradient with CSS Animation */}
             <div 
-              className="absolute inset-0 opacity-50"
+              className="absolute inset-0 opacity-50 animate-gradient-shift"
               style={{
                 background: `
-                  radial-gradient(ellipse 80% 50% at ${30 + mousePosition.x * 20}% ${20 + mousePosition.y * 20}%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
-                  radial-gradient(ellipse 60% 40% at ${70 - mousePosition.x * 15}% ${60 + mousePosition.y * 15}%, rgba(236, 72, 153, 0.25) 0%, transparent 50%),
-                  radial-gradient(ellipse 50% 30% at ${50 + mousePosition.x * 10}% ${80 - mousePosition.y * 10}%, rgba(34, 211, 238, 0.2) 0%, transparent 50%)
+                  radial-gradient(ellipse 80% 50% at 40% 30%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 60% 70%, rgba(236, 72, 153, 0.25) 0%, transparent 50%),
+                  radial-gradient(ellipse 50% 30% at 50% 50%, rgba(34, 211, 238, 0.2) 0%, transparent 50%)
                 `,
-                transition: "background 0.3s ease-out",
               }}
             />
             

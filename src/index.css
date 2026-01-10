@@ -286,6 +286,25 @@
     50% { transform: scale(1.4); }
   }
 
+  @keyframes gradient-shift {
+    0%, 100% { 
+      transform: translate(0, 0) scale(1);
+    }
+    25% { 
+      transform: translate(2%, 1%) scale(1.02);
+    }
+    50% { 
+      transform: translate(-1%, 2%) scale(1);
+    }
+    75% { 
+      transform: translate(1%, -1%) scale(1.01);
+    }
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 15s ease-in-out infinite;
+  }
+
   .animation-delay-200 { animation-delay: 0.2s; }
   .animation-delay-400 { animation-delay: 0.4s; }
 }
