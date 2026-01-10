@@ -280,4 +280,12 @@
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
   }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1.25); }
+    50% { transform: scale(1.4); }
+  }
+
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
 }
