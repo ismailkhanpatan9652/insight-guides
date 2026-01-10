@@ -275,4 +275,9 @@
       transform: perspective(1000px) translateX(0) rotateY(0);
     }
   }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
 }

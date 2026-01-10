@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { articles } from "@/data/articles";
-import { ArrowRight, BookOpen, Shield, Users, FileText } from "lucide-react";
+import { ArrowRight, BookOpen, Shield, Users, FileText, Sparkles, Zap, Heart, Star, Gem, Rocket } from "lucide-react";
 
 
 const features = [
@@ -152,21 +152,66 @@ const Index = () => {
         </div>
       </Section>
 
-      {/* Featured Articles Section */}
+      {/* Stunning Feature Boxes Section */}
       <Section>
         <div className="container-wide">
           <SectionHeader 
-            title="Featured Insights" 
-            subtitle="Our most comprehensive guides to help you navigate the digital landscape."
+            title="Why Choose Dativa" 
+            subtitle="Experience the difference with our unique approach to digital insights."
+            centered
           />
-          <div className="space-y-6">
-            {featuredArticles.map((article, index) => (
-              <ArticleCard 
-                key={article.slug}
-                {...article}
-                featured={index === 0}
-              />
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {/* Box 1 - Gradient with floating icon */}
+            <div className="group relative aspect-square rounded-2xl bg-gradient-to-br from-primary via-primary/80 to-accent p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/30">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2),transparent_50%)]" />
+              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
+              <Sparkles className="w-8 h-8 text-white/90 mb-2 group-hover:animate-bounce" />
+              <p className="text-white/90 font-semibold text-sm mt-auto absolute bottom-4 left-4">Curated</p>
+            </div>
+
+            {/* Box 2 - Glass morphism */}
+            <div className="group relative aspect-square rounded-2xl bg-white/5 backdrop-blur-xl border border-white/20 p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105 hover:bg-white/10 hover:border-accent/50">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Zap className="w-8 h-8 text-accent mb-2 group-hover:text-primary transition-colors duration-300" />
+              <p className="text-foreground font-semibold text-sm mt-auto absolute bottom-4 left-4">Fast</p>
+            </div>
+
+            {/* Box 3 - Neon glow effect */}
+            <div className="group relative aspect-square rounded-2xl bg-card border-2 border-accent/30 p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105 hover:border-accent hover:shadow-[0_0_30px_rgba(var(--accent),0.3)]">
+              <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <Heart className="w-8 h-8 text-accent mb-2 group-hover:scale-110 transition-transform" />
+              <p className="text-foreground font-semibold text-sm mt-auto absolute bottom-4 left-4">Trusted</p>
+            </div>
+
+            {/* Box 4 - Animated gradient border */}
+            <div className="group relative aspect-square rounded-2xl p-[2px] bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] cursor-pointer transition-all duration-500 hover:scale-105">
+              <div className="w-full h-full rounded-[14px] bg-card p-4 flex flex-col">
+                <Star className="w-8 h-8 text-primary mb-2 group-hover:rotate-180 transition-transform duration-700" />
+                <p className="text-foreground font-semibold text-sm mt-auto">Premium</p>
+              </div>
+            </div>
+
+            {/* Box 5 - Layered depth effect */}
+            <div className="group relative aspect-square cursor-pointer transition-all duration-500 hover:scale-105">
+              <div className="absolute inset-0 rounded-2xl bg-accent/20 translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
+              <div className="absolute inset-0 rounded-2xl bg-primary/30 translate-x-1 translate-y-1 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300" />
+              <div className="relative w-full h-full rounded-2xl bg-card border border-border p-4 flex flex-col">
+                <Gem className="w-8 h-8 text-primary mb-2" />
+                <p className="text-foreground font-semibold text-sm mt-auto">Quality</p>
+              </div>
+            </div>
+
+            {/* Box 6 - Orbital animation */}
+            <div className="group relative aspect-square rounded-2xl bg-gradient-to-br from-accent/20 to-primary/20 p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105">
+              <div className="absolute inset-4 rounded-full border border-dashed border-primary/30 animate-[spin_20s_linear_infinite]" />
+              <div className="absolute inset-8 rounded-full border border-dashed border-accent/30 animate-[spin_15s_linear_infinite_reverse]" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Rocket className="w-8 h-8 text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+              <p className="text-foreground font-semibold text-sm absolute bottom-4 left-4">Growth</p>
+            </div>
           </div>
         </div>
       </Section>
