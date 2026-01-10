@@ -4,9 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { FeatureCard } from "@/components/FeatureCard";
-import { BentoCard } from "@/components/ui/BentoCard";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { PulsingIcon } from "@/components/ui/PulsingIcon";
 import { articles } from "@/data/articles";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import { 
@@ -22,7 +20,13 @@ import {
   Play,
   CheckCircle2,
   ArrowUpRight,
-  Star
+  Star,
+  Layers,
+  Target,
+  Rocket,
+  Brain,
+  Lock,
+  Cpu
 } from "lucide-react";
 
 const stats = [
@@ -84,6 +88,59 @@ const testimonials = [
   },
 ];
 
+// Floating element component
+const FloatingElement = ({ 
+  children, 
+  delay = 0, 
+  duration = 6,
+  className = "" 
+}: { 
+  children: React.ReactNode; 
+  delay?: number; 
+  duration?: number;
+  className?: string;
+}) => (
+  <motion.div
+    className={className}
+    animate={{
+      y: [-20, 20, -20],
+      x: [-10, 10, -10],
+      rotate: [-5, 5, -5],
+    }}
+    transition={{
+      duration,
+      repeat: Infinity,
+      ease: "easeInOut",
+      delay,
+    }}
+  >
+    {children}
+  </motion.div>
+);
+
+// Glassmorphism card component
+const GlassCard = ({ 
+  children, 
+  className = "",
+  delay = 0
+}: { 
+  children: React.ReactNode; 
+  className?: string;
+  delay?: number;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 40, scale: 0.9 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+    whileHover={{ scale: 1.02, y: -5 }}
+    className={`relative group backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl overflow-hidden ${className}`}
+  >
+    {/* Hover glow effect */}
+    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/20 via-transparent to-accent/20" />
+    {children}
+  </motion.div>
+);
+
 const Index = () => {
   const featuredArticles = articles.slice(0, 6);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -91,9 +148,8 @@ const Index = () => {
   const { scrollYProgress } = useScroll();
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
   
-  const heroOpacity = useTransform(smoothProgress, [0, 0.2], [1, 0]);
-  const heroScale = useTransform(smoothProgress, [0, 0.2], [1, 0.95]);
-  const heroY = useTransform(smoothProgress, [0, 0.3], [0, 100]);
+  const heroOpacity = useTransform(smoothProgress, [0, 0.15], [1, 0]);
+  const heroScale = useTransform(smoothProgress, [0, 0.15], [1, 0.9]);
 
   const AnimatedSection = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
     const ref = useRef(null);
@@ -114,177 +170,273 @@ const Index = () => {
   return (
     <Layout>
       <div ref={containerRef} className="relative">
-        {/* Premium Hero Section */}
+        {/* Immersive Hero Section with Splash Gradient */}
         <motion.section 
           ref={heroRef}
-          style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
+          style={{ opacity: heroOpacity, scale: heroScale }}
           className="relative min-h-screen flex items-center justify-center overflow-hidden"
         >
-          {/* Animated Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-            {/* Static Mesh Gradient with CSS Animation */}
-            <div 
-              className="absolute inset-0 opacity-50 animate-gradient-shift"
-              style={{
-                background: `
-                  radial-gradient(ellipse 80% 50% at 40% 30%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
-                  radial-gradient(ellipse 60% 40% at 60% 70%, rgba(236, 72, 153, 0.25) 0%, transparent 50%),
-                  radial-gradient(ellipse 50% 30% at 50% 50%, rgba(34, 211, 238, 0.2) 0%, transparent 50%)
-                `,
+          {/* Multi-layered Splash Gradient Background */}
+          <div className="absolute inset-0 bg-[#0a0a1a]">
+            {/* Primary splash gradient */}
+            <motion.div
+              className="absolute inset-0"
+              animate={{
+                background: [
+                  "radial-gradient(ellipse 100% 80% at 20% 20%, rgba(99, 102, 241, 0.4) 0%, transparent 60%), radial-gradient(ellipse 80% 60% at 80% 80%, rgba(236, 72, 153, 0.35) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 50% 50%, rgba(34, 211, 238, 0.25) 0%, transparent 50%)",
+                  "radial-gradient(ellipse 100% 80% at 30% 30%, rgba(139, 92, 246, 0.4) 0%, transparent 60%), radial-gradient(ellipse 80% 60% at 70% 70%, rgba(244, 114, 182, 0.35) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 60% 40%, rgba(56, 189, 248, 0.25) 0%, transparent 50%)",
+                  "radial-gradient(ellipse 100% 80% at 20% 20%, rgba(99, 102, 241, 0.4) 0%, transparent 60%), radial-gradient(ellipse 80% 60% at 80% 80%, rgba(236, 72, 153, 0.35) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 50% 50%, rgba(34, 211, 238, 0.25) 0%, transparent 50%)",
+                ],
               }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             />
             
-            {/* Animated Grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+            {/* Animated mesh gradient overlay */}
+            <div className="absolute inset-0 opacity-30">
+              <motion.div
+                className="absolute w-[800px] h-[800px] -top-40 -left-40 rounded-full"
+                style={{
+                  background: "radial-gradient(circle, rgba(99, 102, 241, 0.6) 0%, transparent 70%)",
+                  filter: "blur(80px)",
+                }}
+                animate={{
+                  x: [0, 100, 0],
+                  y: [0, 50, 0],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute w-[600px] h-[600px] -bottom-20 -right-20 rounded-full"
+                style={{
+                  background: "radial-gradient(circle, rgba(236, 72, 153, 0.5) 0%, transparent 70%)",
+                  filter: "blur(80px)",
+                }}
+                animate={{
+                  x: [0, -80, 0],
+                  y: [0, -60, 0],
+                  scale: [1, 1.3, 1],
+                }}
+                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+              />
+              <motion.div
+                className="absolute w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+                style={{
+                  background: "radial-gradient(circle, rgba(34, 211, 238, 0.4) 0%, transparent 70%)",
+                  filter: "blur(60px)",
+                }}
+                animate={{
+                  scale: [1, 1.4, 1],
+                  opacity: [0.3, 0.6, 0.3],
+                }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              />
+            </div>
+
+            {/* Floating particles */}
+            <div className="absolute inset-0 overflow-hidden">
+              {[...Array(30)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-white/30 rounded-full"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                  }}
+                  animate={{
+                    y: [-20, -100 - Math.random() * 100],
+                    opacity: [0, 1, 0],
+                    scale: [0, 1 + Math.random(), 0],
+                  }}
+                  transition={{
+                    duration: 3 + Math.random() * 4,
+                    repeat: Infinity,
+                    delay: Math.random() * 5,
+                    ease: "easeOut",
+                  }}
+                />
+              ))}
+            </div>
             
-            {/* Floating Orbs */}
-            <motion.div
-              animate={{
-                y: [0, -30, 0],
-                x: [0, 20, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl"
-            />
-            <motion.div
-              animate={{
-                y: [0, 40, 0],
-                x: [0, -30, 0],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl"
-            />
-            <motion.div
-              animate={{
-                y: [0, 20, 0],
-                scale: [1, 1.15, 1],
-              }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-              className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/15 rounded-full blur-3xl"
-            />
+            {/* Grid overlay */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_40%,transparent_100%)]" />
           </div>
 
-          {/* Hero Content */}
+          {/* Hero Content with Bento Grid */}
           <div className="relative z-10 container-wide px-6 py-20">
-            <div className="max-w-5xl mx-auto text-center">
-              {/* Animated Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <span className="text-sm font-medium text-white/80">Trusted by 50,000+ readers worldwide</span>
-              </motion.div>
-
-              {/* Main Heading */}
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight mb-6"
-              >
-                Navigate the
-                <br />
-                <span className="relative">
-                  <span className="bg-gradient-to-r from-indigo-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                    Digital World
-                  </span>
-                  <motion.svg
-                    className="absolute -bottom-2 left-0 w-full"
-                    viewBox="0 0 300 12"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 1.5, delay: 1 }}
-                  >
-                    <motion.path
-                      d="M2 10 Q 75 2, 150 6 T 298 4"
-                      fill="none"
-                      stroke="url(#gradient)"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                    <defs>
-                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#818cf8" />
-                        <stop offset="50%" stopColor="#f472b6" />
-                        <stop offset="100%" stopColor="#22d3ee" />
-                      </linearGradient>
-                    </defs>
-                  </motion.svg>
-                </span>
-                <br />
-                with Confidence
-              </motion.h1>
-
-              {/* Subheading */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="text-lg sm:text-xl md:text-2xl text-white/60 max-w-3xl mx-auto mb-12 leading-relaxed"
-              >
-                Expert guides, unbiased reviews, and actionable insights to help you make smarter decisions in today's complex digital landscape.
-              </motion.p>
-
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
-              >
-                <Link to="/insights">
-                  <Button 
-                    size="lg" 
-                    className="group relative overflow-hidden bg-white text-slate-900 hover:bg-white/90 px-8 py-6 text-lg font-semibold rounded-full shadow-2xl shadow-white/20 transition-all duration-300 hover:scale-105 hover:shadow-white/30"
-                  >
-                    <span className="relative z-10 flex items-center gap-2">
-                      Explore Guides
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </Button>
-                </Link>
-                <Button 
-                  variant="ghost" 
-                  size="lg"
-                  className="group text-white/80 hover:text-white hover:bg-white/5 px-8 py-6 text-lg font-medium rounded-full border border-white/10 transition-all duration-300"
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Content */}
+              <div className="text-left">
+                {/* Animated Badge */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8"
                 >
-                  <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                  Watch Demo
-                </Button>
-              </motion.div>
-
-              {/* Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
-              >
-                {stats.map((stat, index) => (
                   <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-                    className="relative group"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="w-2 h-2 rounded-full bg-emerald-400"
+                  />
+                  <span className="text-sm font-medium text-white/70">Trusted by 50K+ readers</span>
+                  <ArrowRight className="w-4 h-4 text-white/50" />
+                </motion.div>
+
+                {/* Main Heading */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-6"
+                >
+                  Your Guide to
+                  <br />
+                  <motion.span 
+                    className="relative inline-block"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative p-4">
-                      <stat.icon className="w-6 h-6 text-white/40 mx-auto mb-2" />
-                      <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                      <div className="text-sm text-white/50">{stat.label}</div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
+                    <span className="bg-gradient-to-r from-indigo-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+                      Smarter
+                    </span>
+                    <motion.div
+                      className="absolute -inset-x-4 -inset-y-2 bg-gradient-to-r from-indigo-500/20 via-pink-500/20 to-cyan-500/20 rounded-lg blur-xl -z-10"
+                      animate={{ opacity: [0.5, 0.8, 0.5] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    />
+                  </motion.span>
+                  <br />
+                  Decisions
+                </motion.h1>
+
+                {/* Subheading */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  className="text-lg sm:text-xl text-white/50 max-w-xl mb-10 leading-relaxed"
+                >
+                  Expert guides, unbiased reviews, and actionable insights for the modern digital consumer.
+                </motion.p>
+
+                {/* CTA Buttons */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  className="flex flex-wrap items-center gap-4"
+                >
+                  <Link to="/insights">
+                    <Button 
+                      size="lg" 
+                      className="group relative overflow-hidden bg-white text-slate-900 hover:bg-white/90 px-8 py-6 text-lg font-semibold rounded-2xl shadow-2xl shadow-white/10"
+                    >
+                      <motion.span 
+                        className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-pink-500 to-cyan-500"
+                        initial={{ x: "-100%" }}
+                        whileHover={{ x: "100%" }}
+                        transition={{ duration: 0.6 }}
+                      />
+                      <span className="relative z-10 flex items-center gap-2">
+                        Explore Guides
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </Button>
+                  </Link>
+                  <Link to="/how-it-works">
+                    <Button 
+                      variant="ghost" 
+                      size="lg"
+                      className="text-white/70 hover:text-white hover:bg-white/5 px-6 py-6 text-lg font-medium rounded-2xl border border-white/10"
+                    >
+                      <Play className="w-5 h-5 mr-2" />
+                      How it Works
+                    </Button>
+                  </Link>
+                </motion.div>
+
+                {/* Trust indicators */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.2 }}
+                  className="flex items-center gap-8 mt-12 pt-8 border-t border-white/10"
+                >
+                  {[
+                    { icon: Shield, label: "Verified Reviews" },
+                    { icon: Lock, label: "Secure & Private" },
+                    { icon: Zap, label: "Real-time Updates" },
+                  ].map((item, i) => (
+                    <motion.div 
+                      key={item.label}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.4 + i * 0.1 }}
+                      className="flex items-center gap-2 text-white/40"
+                    >
+                      <item.icon className="w-4 h-4" />
+                      <span className="text-sm">{item.label}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Right Side - Bento Grid */}
+              <div className="hidden lg:grid grid-cols-2 gap-4">
+                {/* Stats Card - Large */}
+                <GlassCard className="col-span-2 p-6" delay={0.3}>
+                  <div className="grid grid-cols-4 gap-4">
+                    {stats.map((stat, i) => (
+                      <motion.div 
+                        key={stat.label}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.5 + i * 0.1 }}
+                        className="text-center"
+                      >
+                        <stat.icon className="w-5 h-5 text-white/30 mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-white">{stat.value}</div>
+                        <div className="text-xs text-white/40">{stat.label}</div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </GlassCard>
+
+                {/* Feature Cards */}
+                <GlassCard className="p-5" delay={0.5}>
+                  <FloatingElement delay={0} duration={5} className="w-12 h-12 mb-4 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <Brain className="w-6 h-6 text-white" />
+                  </FloatingElement>
+                  <h3 className="text-lg font-semibold text-white mb-2">AI-Powered</h3>
+                  <p className="text-sm text-white/40">Smart recommendations tailored to your needs</p>
+                </GlassCard>
+
+                <GlassCard className="p-5" delay={0.6}>
+                  <FloatingElement delay={1} duration={6} className="w-12 h-12 mb-4 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
+                    <Target className="w-6 h-6 text-white" />
+                  </FloatingElement>
+                  <h3 className="text-lg font-semibold text-white mb-2">Precise</h3>
+                  <p className="text-sm text-white/40">Accurate data from trusted sources</p>
+                </GlassCard>
+
+                <GlassCard className="p-5" delay={0.7}>
+                  <FloatingElement delay={2} duration={5.5} className="w-12 h-12 mb-4 rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-600 flex items-center justify-center">
+                    <Rocket className="w-6 h-6 text-white" />
+                  </FloatingElement>
+                  <h3 className="text-lg font-semibold text-white mb-2">Fast</h3>
+                  <p className="text-sm text-white/40">Get answers in seconds, not hours</p>
+                </GlassCard>
+
+                <GlassCard className="p-5" delay={0.8}>
+                  <FloatingElement delay={0.5} duration={7} className="w-12 h-12 mb-4 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+                    <Layers className="w-6 h-6 text-white" />
+                  </FloatingElement>
+                  <h3 className="text-lg font-semibold text-white mb-2">Complete</h3>
+                  <p className="text-sm text-white/40">Comprehensive coverage across topics</p>
+                </GlassCard>
+              </div>
             </div>
 
             {/* Scroll Indicator */}
@@ -297,9 +449,9 @@ const Index = () => {
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="flex flex-col items-center gap-2 text-white/40"
+                className="flex flex-col items-center gap-2 text-white/30"
               >
-                <span className="text-xs uppercase tracking-widest">Scroll</span>
+                <span className="text-xs uppercase tracking-widest">Scroll to explore</span>
                 <ChevronDown className="w-5 h-5" />
               </motion.div>
             </motion.div>
@@ -347,214 +499,185 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Premium Bento Grid Section */}
+        {/* New Bento Section */}
         <section className="relative py-32 bg-muted/30 overflow-hidden">
-          <div className="container-wide px-6">
+          {/* Animated background gradient */}
+          <motion.div
+            className="absolute inset-0 opacity-50"
+            animate={{
+              background: [
+                "radial-gradient(ellipse 80% 50% at 20% 80%, hsl(var(--primary) / 0.15) 0%, transparent 50%)",
+                "radial-gradient(ellipse 80% 50% at 80% 20%, hsl(var(--accent) / 0.15) 0%, transparent 50%)",
+                "radial-gradient(ellipse 80% 50% at 20% 80%, hsl(var(--primary) / 0.15) 0%, transparent 50%)",
+              ],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          <div className="container-wide px-6 relative">
             <AnimatedSection>
-              <div className="text-center max-w-3xl mx-auto mb-20">
+              <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-                  Our Approach
+                  Our Platform
                 </span>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                  Experience the
-                  <span className="text-gradient"> Difference</span>
+                  Everything You
+                  <span className="text-gradient"> Need</span>
                 </h2>
               </div>
             </AnimatedSection>
 
+            {/* Bento Grid Layout */}
             <div className="grid grid-cols-12 gap-4 md:gap-6">
               {/* Large Featured Card */}
               <AnimatedSection className="col-span-12 md:col-span-8">
-                <BentoCard 
-                  className="h-80 md:h-96" 
-                  glowColor="rgba(139, 92, 246, 0.4)"
-                  enableTilt={true}
-                  enableShimmer={true}
+                <motion.div 
+                  whileHover={{ scale: 1.01, y: -5 }}
+                  className="relative h-80 md:h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-8 group"
                 >
-                  <div className="h-full rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-8">
-                    {/* Animated background pattern */}
-                    <div className="absolute inset-0 overflow-hidden">
+                  {/* Animated mesh */}
+                  <motion.div
+                    className="absolute inset-0 opacity-30"
+                    animate={{ 
+                      backgroundPosition: ["0% 0%", "100% 100%"],
+                    }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    style={{
+                      backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }}
+                  />
+                  
+                  <div className="relative z-10 h-full flex flex-col justify-between">
+                    <div>
                       <motion.div
-                        className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvZz48L3N2Zz4=')] opacity-50"
-                        animate={{ 
-                          backgroundPosition: ["0px 0px", "60px 60px"],
-                        }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      />
-                    </div>
-                    
-                    <div className="relative z-10 h-full flex flex-col justify-between">
-                      <div className="flex items-start justify-between">
-                        <PulsingIcon color="rgba(255, 255, 255, 0.2)">
-                          <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                            <motion.div
-                              animate={{ rotate: [0, 10, -10, 0] }}
-                              transition={{ duration: 4, repeat: Infinity }}
-                            >
-                              <Sparkles className="w-7 h-7 text-white" />
-                            </motion.div>
-                          </div>
-                        </PulsingIcon>
-                        <motion.div
-                          whileHover={{ x: 5, y: -5 }}
-                          transition={{ type: "spring", stiffness: 400 }}
-                        >
-                          <ArrowUpRight className="w-6 h-6 text-white/60 group-hover:text-white transition-colors" />
-                        </motion.div>
-                      </div>
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                        className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-6"
                       >
-                        <h3 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
-                          Curated Excellence
-                        </h3>
-                        <p className="text-white/70 text-lg max-w-lg">
-                          Every guide is meticulously researched and vetted by our expert team to ensure you get only the best recommendations.
-                        </p>
+                        <Sparkles className="w-8 h-8 text-white" />
                       </motion.div>
+                      <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">Curated Excellence</h3>
+                      <p className="text-white/70 text-lg max-w-md">
+                        Every guide is handcrafted by experts who understand the nuances of digital services.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      {["Loans", "Streaming", "VPN", "Health"].map((tag) => (
+                        <span key={tag} className="px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm backdrop-blur-sm">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                </BentoCard>
+
+                  {/* Floating orbs */}
+                  <motion.div
+                    className="absolute top-10 right-10 w-32 h-32 rounded-full bg-white/10 blur-2xl"
+                    animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  />
+                </motion.div>
               </AnimatedSection>
 
               {/* Stats Card */}
               <AnimatedSection className="col-span-12 md:col-span-4">
-                <BentoCard 
-                  className="h-80 md:h-96" 
-                  glowColor="rgba(16, 185, 129, 0.3)"
-                  enableTilt={true}
+                <motion.div 
+                  whileHover={{ scale: 1.02 }}
+                  className="h-80 md:h-96 rounded-3xl bg-card border border-border p-6 flex flex-col justify-between"
                 >
-                  <div className="h-full rounded-3xl overflow-hidden bg-card border border-border/50 p-8">
-                    <div className="h-full flex flex-col justify-between">
-                      <PulsingIcon color="rgba(16, 185, 129, 0.15)">
-                        <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
-                          <motion.div
-                            animate={{ y: [0, -3, 0] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          >
-                            <TrendingUp className="w-6 h-6 text-emerald-500" />
-                          </motion.div>
-                        </div>
-                      </PulsingIcon>
-                      <div>
-                        <div className="text-6xl md:text-7xl font-bold text-foreground mb-2">
-                          <AnimatedCounter target={98} suffix="%" duration={2.5} />
-                        </div>
-                        <p className="text-muted-foreground text-lg">Reader satisfaction rate across all our guides</p>
-                      </div>
+                  <div>
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+                      <TrendingUp className="w-6 h-6 text-primary" />
                     </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Real Impact</h3>
+                    <p className="text-muted-foreground">Measurable results that matter</p>
                   </div>
-                </BentoCard>
+                  <div className="space-y-4">
+                    {[
+                      { label: "Avg. Savings", value: "$847/yr" },
+                      { label: "Time Saved", value: "12+ hrs" },
+                      { label: "Better Choices", value: "93%" },
+                    ].map((stat) => (
+                      <div key={stat.label} className="flex justify-between items-center">
+                        <span className="text-muted-foreground">{stat.label}</span>
+                        <span className="text-xl font-bold text-foreground">{stat.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
               </AnimatedSection>
 
-              {/* Lightning Fast Card */}
-              <AnimatedSection className="col-span-6 md:col-span-4">
-                <BentoCard 
-                  className="h-64" 
-                  glowColor="rgba(245, 158, 11, 0.4)"
-                  enableTilt={true}
+              {/* Small Cards Row */}
+              <AnimatedSection className="col-span-6 md:col-span-3">
+                <motion.div 
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="h-48 rounded-3xl bg-gradient-to-br from-cyan-500 to-blue-600 p-6 flex flex-col justify-between group"
                 >
-                  <div className="h-full rounded-3xl overflow-hidden bg-gradient-to-br from-amber-500 to-orange-600 p-6 flex flex-col">
-                    <PulsingIcon color="rgba(255, 255, 255, 0.2)" size="sm">
-                      <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                        <motion.div
-                          animate={{ 
-                            scale: [1, 1.2, 1],
-                            rotate: [0, 5, -5, 0],
-                          }}
-                          transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
-                        >
-                          <Zap className="w-5 h-5 text-white" />
-                        </motion.div>
-                      </div>
-                    </PulsingIcon>
-                    <div className="mt-auto">
-                      <h4 className="font-display text-xl font-bold text-white mb-2">Lightning Fast</h4>
-                      <p className="text-white/70 text-sm">Get insights in minutes, not hours</p>
-                    </div>
+                  <motion.div
+                    animate={{ y: [-5, 5, -5] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  >
+                    <Zap className="w-8 h-8 text-white" />
+                  </motion.div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">Lightning Fast</h4>
+                    <p className="text-white/70 text-sm">Quick insights</p>
                   </div>
-                </BentoCard>
+                </motion.div>
               </AnimatedSection>
 
-              {/* Unbiased Card */}
-              <AnimatedSection className="col-span-6 md:col-span-4">
-                <BentoCard 
-                  className="h-64" 
-                  glowColor="rgba(6, 182, 212, 0.4)"
-                  enableTilt={true}
+              <AnimatedSection className="col-span-6 md:col-span-3">
+                <motion.div 
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="h-48 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 p-6 flex flex-col justify-between"
                 >
-                  <div className="h-full rounded-3xl overflow-hidden bg-gradient-to-br from-cyan-500 to-blue-600 p-6 flex flex-col">
-                    <PulsingIcon color="rgba(255, 255, 255, 0.2)" size="sm">
-                      <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                        <motion.div
-                          animate={{ 
-                            scale: [1, 1.1, 1],
-                          }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        >
-                          <Shield className="w-5 h-5 text-white" />
-                        </motion.div>
-                      </div>
-                    </PulsingIcon>
-                    <div className="mt-auto">
-                      <h4 className="font-display text-xl font-bold text-white mb-2">100% Unbiased</h4>
-                      <p className="text-white/70 text-sm">No sponsored content, ever</p>
-                    </div>
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  >
+                    <Globe className="w-8 h-8 text-white" />
+                  </motion.div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">Global Reach</h4>
+                    <p className="text-white/70 text-sm">Worldwide coverage</p>
                   </div>
-                </BentoCard>
+                </motion.div>
               </AnimatedSection>
 
-              {/* Testimonial Card */}
-              <AnimatedSection className="col-span-12 md:col-span-4">
-                <BentoCard 
-                  className="h-64" 
-                  glowColor="rgba(251, 191, 36, 0.3)"
-                  enableTilt={true}
+              <AnimatedSection className="col-span-6 md:col-span-3">
+                <motion.div 
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="h-48 rounded-3xl bg-gradient-to-br from-amber-500 to-orange-600 p-6 flex flex-col justify-between"
                 >
-                  <div className="h-full rounded-3xl overflow-hidden bg-card border border-border/50 p-6 flex flex-col">
-                    <div className="flex items-center gap-1 mb-4">
-                      {[1, 2, 3, 4, 5].map((star, i) => (
-                        <motion.div
-                          key={star}
-                          initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                          transition={{ delay: i * 0.1, type: "spring", stiffness: 200 }}
-                        >
-                          <motion.div
-                            animate={{ 
-                              scale: [1, 1.2, 1],
-                            }}
-                            transition={{ 
-                              duration: 0.5, 
-                              repeat: Infinity, 
-                              repeatDelay: 3,
-                              delay: i * 0.1 
-                            }}
-                          >
-                            <Star className="w-6 h-6 fill-amber-400 text-amber-400" />
-                          </motion.div>
-                        </motion.div>
-                      ))}
-                    </div>
-                    <blockquote className="text-foreground text-lg font-medium mb-4 flex-1">
-                      "The best resource for making informed digital decisions."
-                    </blockquote>
-                    <div className="flex items-center gap-3">
-                      <motion.div 
-                        className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold"
-                        whileHover={{ scale: 1.1, rotate: 10 }}
-                      >
-                        T
-                      </motion.div>
-                      <div>
-                        <div className="font-medium text-foreground">Tech Weekly</div>
-                        <div className="text-sm text-muted-foreground">Featured Review</div>
-                      </div>
-                    </div>
+                  <motion.div
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <Star className="w-8 h-8 text-white" />
+                  </motion.div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">Top Rated</h4>
+                    <p className="text-white/70 text-sm">User approved</p>
                   </div>
-                </BentoCard>
+                </motion.div>
+              </AnimatedSection>
+
+              <AnimatedSection className="col-span-6 md:col-span-3">
+                <motion.div 
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="h-48 rounded-3xl bg-gradient-to-br from-rose-500 to-pink-600 p-6 flex flex-col justify-between"
+                >
+                  <motion.div
+                    animate={{ y: [-3, 3, -3], x: [-2, 2, -2] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  >
+                    <Cpu className="w-8 h-8 text-white" />
+                  </motion.div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">Smart Tech</h4>
+                    <p className="text-white/70 text-sm">AI-enhanced</p>
+                  </div>
+                </motion.div>
               </AnimatedSection>
             </div>
           </div>
@@ -562,44 +685,46 @@ const Index = () => {
 
         {/* Testimonials Section */}
         <section className="relative py-32 bg-background overflow-hidden">
-          <div className="container-wide px-6">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--accent)/0.05),transparent_50%)]" />
+          
+          <div className="container-wide px-6 relative">
             <AnimatedSection>
-              <div className="text-center max-w-3xl mx-auto mb-20">
+              <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-4">
                   Testimonials
                 </span>
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
                   Loved by
                   <span className="text-gradient"> Thousands</span>
                 </h2>
               </div>
             </AnimatedSection>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6">
               {testimonials.map((testimonial, index) => (
                 <AnimatedSection key={testimonial.author}>
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    className="group relative h-full"
+                  <motion.div 
+                    whileHover={{ y: -10, scale: 1.02 }}
+                    className="p-8 rounded-3xl bg-card border border-border hover:border-primary/30 transition-all duration-300 h-full"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative h-full bg-card border border-border/50 rounded-3xl p-8 group-hover:border-primary/20 transition-colors">
-                      <div className="flex gap-1 mb-6">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                        ))}
-                      </div>
-                      <blockquote className="text-foreground text-lg leading-relaxed mb-8">
-                        "{testimonial.quote}"
-                      </blockquote>
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg">
-                          {testimonial.avatar}
-                        </div>
-                        <div>
-                          <div className="font-semibold text-foreground">{testimonial.author}</div>
-                          <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                        </div>
+                    <div className="flex gap-1 mb-6">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                    <p className="text-foreground/80 mb-8 text-lg leading-relaxed">
+                      "{testimonial.quote}"
+                    </p>
+                    <div className="flex items-center gap-4">
+                      <motion.div 
+                        whileHover={{ scale: 1.1 }}
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold"
+                      >
+                        {testimonial.avatar}
+                      </motion.div>
+                      <div>
+                        <p className="font-semibold text-foreground">{testimonial.author}</p>
+                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -609,21 +734,22 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Featured Articles Section */}
+        {/* Featured Articles */}
         <section className="relative py-32 bg-muted/30 overflow-hidden">
           <div className="container-wide px-6">
             <AnimatedSection>
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
                 <div>
                   <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-4">
                     Latest Insights
                   </span>
                   <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-                    Fresh from Our Experts
+                    Featured
+                    <span className="text-gradient"> Articles</span>
                   </h2>
                 </div>
                 <Link to="/insights">
-                  <Button variant="outline" size="lg" className="group rounded-full">
+                  <Button variant="outline" className="group rounded-full">
                     View All Articles
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -632,63 +758,74 @@ const Index = () => {
             </AnimatedSection>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredArticles.map((article, index) => (
+              {featuredArticles.map((article) => (
                 <AnimatedSection key={article.slug}>
-                  <ArticleCard {...article} />
+                  <ArticleCard 
+                    slug={article.slug}
+                    title={article.title}
+                    excerpt={article.excerpt}
+                    category={article.category}
+                    readTime={article.readTime}
+                    image={article.image}
+                  />
                 </AnimatedSection>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Premium CTA Section */}
+        {/* Final CTA */}
         <section className="relative py-32 overflow-hidden">
-          {/* Gradient Background */}
+          {/* Animated gradient background */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.3),transparent_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_100%,rgba(236,72,153,0.2),transparent_50%)]" />
+            <motion.div
+              className="absolute inset-0"
+              animate={{
+                background: [
+                  "radial-gradient(ellipse 60% 40% at 30% 50%, rgba(99, 102, 241, 0.2) 0%, transparent 60%)",
+                  "radial-gradient(ellipse 60% 40% at 70% 50%, rgba(236, 72, 153, 0.2) 0%, transparent 60%)",
+                  "radial-gradient(ellipse 60% 40% at 30% 50%, rgba(99, 102, 241, 0.2) 0%, transparent 60%)",
+                ],
+              }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            />
           </div>
 
-          <div className="container-wide px-6 relative">
+          <div className="container-wide px-6 relative z-10">
             <AnimatedSection>
               <div className="max-w-4xl mx-auto text-center">
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.6 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8"
+                  className="w-20 h-20 rounded-3xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-8"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm font-medium text-white/80">Free access to all guides</span>
+                  <Sparkles className="w-10 h-10 text-white" />
                 </motion.div>
-
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                   Ready to Make
                   <br />
                   <span className="bg-gradient-to-r from-indigo-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                    Smarter Decisions?
+                    Smarter Choices?
                   </span>
                 </h2>
-
-                <p className="text-xl text-white/60 max-w-2xl mx-auto mb-12">
-                  Join thousands of readers who trust Dativa for unbiased insights and expert recommendations.
+                <p className="text-xl text-white/60 mb-10 max-w-2xl mx-auto">
+                  Join thousands of readers who trust Dativa for unbiased insights and expert guidance.
                 </p>
-
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link to="/insights">
                     <Button 
                       size="lg" 
-                      className="group bg-white text-slate-900 hover:bg-white/90 px-8 py-6 text-lg font-semibold rounded-full shadow-2xl shadow-white/20 transition-all duration-300 hover:scale-105"
+                      className="bg-white text-slate-900 hover:bg-white/90 px-8 py-6 text-lg font-semibold rounded-2xl shadow-2xl"
                     >
                       Start Exploring
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-5 h-5 ml-2" />
                     </Button>
                   </Link>
                   <Link to="/about">
                     <Button 
                       variant="ghost" 
                       size="lg"
-                      className="text-white/80 hover:text-white hover:bg-white/5 px-8 py-6 text-lg rounded-full border border-white/10"
+                      className="text-white/70 hover:text-white hover:bg-white/5 px-8 py-6 text-lg rounded-2xl border border-white/10"
                     >
                       Learn About Us
                     </Button>
