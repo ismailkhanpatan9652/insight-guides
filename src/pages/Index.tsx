@@ -161,56 +161,68 @@ const Index = () => {
             centered
           />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {/* Box 1 - Gradient with floating icon */}
-            <div className="group relative aspect-square rounded-2xl bg-gradient-to-br from-primary via-primary/80 to-accent p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/30">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2),transparent_50%)]" />
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
-              <Sparkles className="w-8 h-8 text-white/90 mb-2 group-hover:animate-bounce" />
-              <p className="text-white/90 font-semibold text-sm mt-auto absolute bottom-4 left-4">Curated</p>
+            {/* Box 1 - Gradient with floating icon & particle burst */}
+            <div className="group relative aspect-square rounded-2xl bg-gradient-to-br from-primary via-primary/80 to-accent p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-primary/40 hover:rotate-2">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2),transparent_50%)] group-hover:bg-[radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.3),transparent_50%)] transition-all duration-700" />
+              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-white/10 rounded-full blur-xl group-hover:scale-[2] group-hover:-translate-x-4 group-hover:-translate-y-4 transition-all duration-700" />
+              <div className="absolute top-2 left-2 w-2 h-2 bg-white/50 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity" />
+              <div className="absolute top-4 right-4 w-1.5 h-1.5 bg-white/40 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping animation-delay-200 transition-opacity" />
+              <div className="absolute bottom-8 right-8 w-1 h-1 bg-white/60 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping animation-delay-400 transition-opacity" />
+              <Sparkles className="w-8 h-8 text-white/90 mb-2 group-hover:animate-spin group-hover:scale-125 transition-transform duration-500" />
+              <p className="text-white/90 font-semibold text-sm mt-auto absolute bottom-4 left-4 group-hover:translate-x-1 transition-transform">Curated</p>
             </div>
 
-            {/* Box 2 - Glass morphism */}
-            <div className="group relative aspect-square rounded-2xl bg-white/5 backdrop-blur-xl border border-white/20 p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105 hover:bg-white/10 hover:border-accent/50">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+            {/* Box 2 - Glass morphism with ripple effect */}
+            <div className="group relative aspect-square rounded-2xl bg-white/5 backdrop-blur-xl border border-white/20 p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-110 hover:bg-white/15 hover:border-accent hover:-rotate-2">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary group-hover:h-full group-hover:opacity-20 transition-all duration-500" />
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Zap className="w-8 h-8 text-accent mb-2 group-hover:text-primary transition-colors duration-300" />
-              <p className="text-foreground font-semibold text-sm mt-auto absolute bottom-4 left-4">Fast</p>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 bg-accent/20 rounded-full group-hover:w-[200%] group-hover:h-[200%] transition-all duration-700" />
+              </div>
+              <Zap className="w-8 h-8 text-accent mb-2 group-hover:text-primary group-hover:scale-150 group-hover:-rotate-12 transition-all duration-300 relative z-10" />
+              <p className="text-foreground font-semibold text-sm mt-auto absolute bottom-4 left-4 group-hover:text-primary transition-colors relative z-10">Fast</p>
             </div>
 
-            {/* Box 3 - Neon glow effect */}
-            <div className="group relative aspect-square rounded-2xl bg-card border-2 border-accent/30 p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105 hover:border-accent hover:shadow-[0_0_30px_rgba(var(--accent),0.3)]">
+            {/* Box 3 - Neon glow with heartbeat */}
+            <div className="group relative aspect-square rounded-2xl bg-card border-2 border-accent/30 p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-110 hover:border-accent hover:shadow-[0_0_40px_hsl(350_70%_75%_/_0.5),inset_0_0_20px_hsl(350_70%_75%_/_0.1)]">
               <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <Heart className="w-8 h-8 text-accent mb-2 group-hover:scale-110 transition-transform" />
-              <p className="text-foreground font-semibold text-sm mt-auto absolute bottom-4 left-4">Trusted</p>
+              <div className="absolute top-2 left-2 w-2 h-2 rounded-full bg-accent/50 opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity" />
+              <Heart className="w-8 h-8 text-accent mb-2 group-hover:scale-125 group-hover:animate-[heartbeat_0.6s_ease-in-out_infinite] transition-transform" />
+              <p className="text-foreground font-semibold text-sm mt-auto absolute bottom-4 left-4 group-hover:tracking-wider transition-all">Trusted</p>
             </div>
 
-            {/* Box 4 - Animated gradient border */}
-            <div className="group relative aspect-square rounded-2xl p-[2px] bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] cursor-pointer transition-all duration-500 hover:scale-105">
-              <div className="w-full h-full rounded-[14px] bg-card p-4 flex flex-col">
-                <Star className="w-8 h-8 text-primary mb-2 group-hover:rotate-180 transition-transform duration-700" />
-                <p className="text-foreground font-semibold text-sm mt-auto">Premium</p>
+            {/* Box 4 - Animated gradient border with flip */}
+            <div className="group relative aspect-square rounded-2xl p-[2px] bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] cursor-pointer transition-all duration-500 hover:scale-110 hover:p-[3px] [perspective:1000px]">
+              <div className="w-full h-full rounded-[14px] bg-card p-4 flex flex-col transition-transform duration-700 group-hover:[transform:rotateY(10deg)_rotateX(5deg)]">
+                <div className="absolute inset-0 rounded-[14px] bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Star className="w-8 h-8 text-primary mb-2 group-hover:rotate-[360deg] group-hover:scale-125 group-hover:text-accent transition-all duration-700 relative z-10" />
+                <p className="text-foreground font-semibold text-sm mt-auto relative z-10 group-hover:text-primary transition-colors">Premium</p>
               </div>
             </div>
 
-            {/* Box 5 - Layered depth effect */}
-            <div className="group relative aspect-square cursor-pointer transition-all duration-500 hover:scale-105">
-              <div className="absolute inset-0 rounded-2xl bg-accent/20 translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300" />
-              <div className="absolute inset-0 rounded-2xl bg-primary/30 translate-x-1 translate-y-1 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300" />
-              <div className="relative w-full h-full rounded-2xl bg-card border border-border p-4 flex flex-col">
-                <Gem className="w-8 h-8 text-primary mb-2" />
-                <p className="text-foreground font-semibold text-sm mt-auto">Quality</p>
+            {/* Box 5 - Layered depth with explosion */}
+            <div className="group relative aspect-square cursor-pointer transition-all duration-500 hover:scale-110 [perspective:800px]">
+              <div className="absolute inset-0 rounded-2xl bg-accent/30 translate-x-2 translate-y-2 group-hover:translate-x-6 group-hover:translate-y-6 group-hover:scale-90 group-hover:opacity-50 transition-all duration-500" />
+              <div className="absolute inset-0 rounded-2xl bg-primary/40 translate-x-1 translate-y-1 group-hover:translate-x-4 group-hover:translate-y-4 group-hover:scale-95 group-hover:opacity-70 transition-all duration-400" />
+              <div className="relative w-full h-full rounded-2xl bg-card border border-border p-4 flex flex-col group-hover:shadow-xl group-hover:[transform:translateZ(20px)] transition-all duration-500">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Gem className="w-8 h-8 text-primary mb-2 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 relative z-10" />
+                <p className="text-foreground font-semibold text-sm mt-auto relative z-10 group-hover:font-bold transition-all">Quality</p>
               </div>
             </div>
 
-            {/* Box 6 - Orbital animation */}
-            <div className="group relative aspect-square rounded-2xl bg-gradient-to-br from-accent/20 to-primary/20 p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105">
-              <div className="absolute inset-4 rounded-full border border-dashed border-primary/30 animate-[spin_20s_linear_infinite]" />
-              <div className="absolute inset-8 rounded-full border border-dashed border-accent/30 animate-[spin_15s_linear_infinite_reverse]" />
+            {/* Box 6 - Orbital animation with liftoff */}
+            <div className="group relative aspect-square rounded-2xl bg-gradient-to-br from-accent/20 to-primary/20 p-4 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-110 hover:bg-gradient-to-tl">
+              <div className="absolute inset-4 rounded-full border border-dashed border-primary/30 animate-[spin_20s_linear_infinite] group-hover:animate-[spin_5s_linear_infinite] group-hover:border-primary/60 transition-all" />
+              <div className="absolute inset-8 rounded-full border border-dashed border-accent/30 animate-[spin_15s_linear_infinite_reverse] group-hover:animate-[spin_3s_linear_infinite_reverse] group-hover:border-accent/60 transition-all" />
+              <div className="absolute inset-12 rounded-full border border-dotted border-primary/20 opacity-0 group-hover:opacity-100 group-hover:animate-[spin_2s_linear_infinite] transition-opacity" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <Rocket className="w-8 h-8 text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300" />
+                <Rocket className="w-8 h-8 text-primary group-hover:-translate-y-3 group-hover:translate-x-2 group-hover:scale-125 group-hover:rotate-[-20deg] transition-all duration-500" />
               </div>
-              <p className="text-foreground font-semibold text-sm absolute bottom-4 left-4">Growth</p>
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-4 h-0 bg-gradient-to-t from-accent via-primary to-transparent rounded-full opacity-0 group-hover:opacity-100 group-hover:h-8 blur-sm transition-all duration-300" />
+              <p className="text-foreground font-semibold text-sm absolute bottom-4 left-4 group-hover:text-primary group-hover:translate-x-1 transition-all">Growth</p>
             </div>
           </div>
         </div>
