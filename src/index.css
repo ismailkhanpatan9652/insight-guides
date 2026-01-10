@@ -6,38 +6,38 @@
 
 /* 
  * Dativa Design System
- * Vibrant, modern, colorful design
- * Purple & Pink theme
+ * Soft, elegant design
+ * Baby Pink theme
  */
 
 @layer base {
   :root {
     /* Core backgrounds */
-    --background: 270 30% 98%;
-    --foreground: 270 50% 15%;
+    --background: 350 50% 98%;
+    --foreground: 350 30% 20%;
 
     /* Card surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 270 50% 15%;
+    --card-foreground: 350 30% 20%;
 
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 270 50% 15%;
+    --popover-foreground: 350 30% 20%;
 
-    /* Primary - Deep Purple */
-    --primary: 270 70% 50%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Baby Pink */
+    --primary: 350 70% 75%;
+    --primary-foreground: 350 40% 20%;
 
-    /* Secondary - Soft Purple Tint */
-    --secondary: 270 40% 94%;
-    --secondary-foreground: 270 60% 35%;
+    /* Secondary - Soft Pink Tint */
+    --secondary: 350 50% 95%;
+    --secondary-foreground: 350 40% 35%;
 
     /* Muted elements */
-    --muted: 270 20% 94%;
-    --muted-foreground: 270 15% 45%;
+    --muted: 350 30% 95%;
+    --muted-foreground: 350 15% 45%;
 
-    /* Accent - Vibrant Pink */
-    --accent: 330 85% 60%;
+    /* Accent - Rose Pink */
+    --accent: 340 65% 65%;
     --accent-foreground: 0 0% 100%;
 
     /* Destructive */
@@ -45,29 +45,29 @@
     --destructive-foreground: 0 0% 100%;
 
     /* Borders & inputs */
-    --border: 270 20% 88%;
-    --input: 270 20% 88%;
-    --ring: 330 85% 60%;
+    --border: 350 35% 90%;
+    --input: 350 35% 90%;
+    --ring: 350 70% 75%;
 
     --radius: 0.75rem;
 
     /* Sidebar */
-    --sidebar-background: 270 25% 97%;
-    --sidebar-foreground: 270 50% 20%;
-    --sidebar-primary: 270 70% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 40% 94%;
-    --sidebar-accent-foreground: 270 60% 35%;
-    --sidebar-border: 270 20% 90%;
-    --sidebar-ring: 330 85% 60%;
+    --sidebar-background: 350 45% 97%;
+    --sidebar-foreground: 350 30% 25%;
+    --sidebar-primary: 350 70% 75%;
+    --sidebar-primary-foreground: 350 40% 20%;
+    --sidebar-accent: 350 50% 95%;
+    --sidebar-accent-foreground: 350 40% 35%;
+    --sidebar-border: 350 35% 92%;
+    --sidebar-ring: 350 70% 75%;
 
     /* Custom tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(270 70% 50%) 0%, hsl(300 60% 55%) 50%, hsl(330 85% 60%) 100%);
-    --card-shadow: 0 8px 32px -8px hsl(270 70% 50% / 0.15);
-    --card-shadow-hover: 0 20px 48px -12px hsl(330 85% 60% / 0.25);
-    --text-gradient: linear-gradient(135deg, hsl(270 70% 50%) 0%, hsl(330 85% 60%) 100%);
-    --glow-primary: 0 0 40px hsl(270 70% 50% / 0.3);
-    --glow-accent: 0 0 40px hsl(330 85% 60% / 0.4);
+    --hero-gradient: linear-gradient(135deg, hsl(350 70% 85%) 0%, hsl(350 65% 80%) 50%, hsl(340 65% 75%) 100%);
+    --card-shadow: 0 8px 32px -8px hsl(350 70% 75% / 0.2);
+    --card-shadow-hover: 0 20px 48px -12px hsl(340 65% 65% / 0.25);
+    --text-gradient: linear-gradient(135deg, hsl(350 70% 65%) 0%, hsl(340 65% 55%) 100%);
+    --glow-primary: 0 0 40px hsl(350 70% 75% / 0.3);
+    --glow-accent: 0 0 40px hsl(340 65% 65% / 0.4);
     
     /* Typography scale */
     --font-display: 'Lora', Georgia, serif;
@@ -75,46 +75,46 @@
   }
 
   .dark {
-    --background: 270 40% 6%;
-    --foreground: 270 20% 95%;
+    --background: 350 25% 8%;
+    --foreground: 350 30% 92%;
 
-    --card: 270 35% 10%;
-    --card-foreground: 270 20% 95%;
+    --card: 350 20% 12%;
+    --card-foreground: 350 30% 92%;
 
-    --popover: 270 35% 10%;
-    --popover-foreground: 270 20% 95%;
+    --popover: 350 20% 12%;
+    --popover-foreground: 350 30% 92%;
 
-    --primary: 270 65% 60%;
-    --primary-foreground: 270 50% 8%;
+    --primary: 350 60% 70%;
+    --primary-foreground: 350 30% 10%;
 
-    --secondary: 270 35% 18%;
-    --secondary-foreground: 270 30% 85%;
+    --secondary: 350 25% 18%;
+    --secondary-foreground: 350 40% 85%;
 
-    --muted: 270 30% 14%;
-    --muted-foreground: 270 15% 60%;
+    --muted: 350 20% 15%;
+    --muted-foreground: 350 15% 55%;
 
-    --accent: 330 80% 60%;
+    --accent: 340 55% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 60% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 270 30% 18%;
-    --input: 270 30% 18%;
-    --ring: 270 65% 60%;
+    --border: 350 20% 20%;
+    --input: 350 20% 20%;
+    --ring: 350 60% 70%;
 
-    --sidebar-background: 270 35% 10%;
-    --sidebar-foreground: 270 20% 90%;
-    --sidebar-primary: 270 65% 60%;
-    --sidebar-primary-foreground: 270 50% 8%;
-    --sidebar-accent: 270 35% 18%;
-    --sidebar-accent-foreground: 270 30% 85%;
-    --sidebar-border: 270 30% 15%;
-    --sidebar-ring: 270 65% 60%;
+    --sidebar-background: 350 20% 12%;
+    --sidebar-foreground: 350 30% 88%;
+    --sidebar-primary: 350 60% 70%;
+    --sidebar-primary-foreground: 350 30% 10%;
+    --sidebar-accent: 350 25% 18%;
+    --sidebar-accent-foreground: 350 40% 85%;
+    --sidebar-border: 350 20% 18%;
+    --sidebar-ring: 350 60% 70%;
 
-    --hero-gradient: linear-gradient(135deg, hsl(270 40% 15%) 0%, hsl(300 50% 35%) 50%, hsl(330 75% 55%) 100%);
+    --hero-gradient: linear-gradient(135deg, hsl(350 25% 15%) 0%, hsl(350 40% 30%) 50%, hsl(340 50% 45%) 100%);
     --card-shadow: 0 8px 32px -8px hsl(0 0% 0% / 0.5);
-    --card-shadow-hover: 0 20px 48px -12px hsl(330 80% 60% / 0.25);
+    --card-shadow-hover: 0 20px 48px -12px hsl(340 55% 60% / 0.25);
   }
 }
 
