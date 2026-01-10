@@ -5,69 +5,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
 
 /* 
- * Sohera Design System
- * Professional, trustworthy, content-focused design
- * Gold and Navy theme
+ * Dativa Design System
+ * Vibrant, modern, colorful design
+ * Teal & Coral theme
  */
 
 @layer base {
   :root {
     /* Core backgrounds */
-    --background: 45 30% 97%;
-    --foreground: 220 50% 15%;
+    --background: 180 20% 98%;
+    --foreground: 180 60% 15%;
 
     /* Card surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 220 50% 15%;
+    --card-foreground: 180 60% 15%;
 
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 50% 15%;
+    --popover-foreground: 180 60% 15%;
 
-    /* Primary - Deep Navy Blue */
-    --primary: 220 60% 25%;
-    --primary-foreground: 45 50% 95%;
+    /* Primary - Deep Teal */
+    --primary: 175 70% 35%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Soft Gold Tint */
-    --secondary: 45 40% 92%;
-    --secondary-foreground: 220 50% 20%;
+    /* Secondary - Soft Teal Tint */
+    --secondary: 175 40% 92%;
+    --secondary-foreground: 175 60% 25%;
 
     /* Muted elements */
-    --muted: 45 20% 94%;
-    --muted-foreground: 220 20% 45%;
+    --muted: 180 15% 94%;
+    --muted-foreground: 180 20% 45%;
 
-    /* Accent - Rich Gold */
-    --accent: 42 85% 55%;
-    --accent-foreground: 220 50% 15%;
+    /* Accent - Vibrant Coral */
+    --accent: 12 85% 60%;
+    --accent-foreground: 0 0% 100%;
 
     /* Destructive */
     --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
     /* Borders & inputs */
-    --border: 45 25% 88%;
-    --input: 45 25% 88%;
-    --ring: 42 85% 55%;
+    --border: 180 20% 88%;
+    --input: 180 20% 88%;
+    --ring: 12 85% 60%;
 
     --radius: 0.75rem;
 
     /* Sidebar */
-    --sidebar-background: 45 30% 96%;
-    --sidebar-foreground: 220 50% 20%;
-    --sidebar-primary: 220 60% 25%;
-    --sidebar-primary-foreground: 45 50% 95%;
-    --sidebar-accent: 45 40% 92%;
-    --sidebar-accent-foreground: 220 50% 20%;
-    --sidebar-border: 45 25% 90%;
-    --sidebar-ring: 42 85% 55%;
+    --sidebar-background: 180 20% 97%;
+    --sidebar-foreground: 180 60% 20%;
+    --sidebar-primary: 175 70% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 175 40% 92%;
+    --sidebar-accent-foreground: 175 60% 25%;
+    --sidebar-border: 180 20% 90%;
+    --sidebar-ring: 12 85% 60%;
 
     /* Custom tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(220 60% 25%) 0%, hsl(220 50% 35%) 50%, hsl(42 85% 55%) 100%);
-    --card-shadow: 0 8px 32px -8px hsl(220 60% 25% / 0.12);
-    --card-shadow-hover: 0 20px 48px -12px hsl(220 60% 25% / 0.2);
-    --text-gradient: linear-gradient(135deg, hsl(220 60% 25%) 0%, hsl(42 85% 55%) 100%);
-    --glow-primary: 0 0 40px hsl(220 60% 25% / 0.3);
-    --glow-accent: 0 0 40px hsl(42 85% 55% / 0.4);
+    --hero-gradient: linear-gradient(135deg, hsl(175 70% 35%) 0%, hsl(185 60% 45%) 50%, hsl(12 85% 60%) 100%);
+    --card-shadow: 0 8px 32px -8px hsl(175 70% 35% / 0.15);
+    --card-shadow-hover: 0 20px 48px -12px hsl(12 85% 60% / 0.25);
+    --text-gradient: linear-gradient(135deg, hsl(175 70% 35%) 0%, hsl(12 85% 60%) 100%);
+    --glow-primary: 0 0 40px hsl(175 70% 35% / 0.3);
+    --glow-accent: 0 0 40px hsl(12 85% 60% / 0.4);
     
     /* Typography scale */
     --font-display: 'Lora', Georgia, serif;
@@ -75,46 +75,46 @@
   }
 
   .dark {
-    --background: 220 50% 8%;
-    --foreground: 45 30% 95%;
+    --background: 180 40% 6%;
+    --foreground: 180 20% 95%;
 
-    --card: 220 45% 10%;
-    --card-foreground: 45 30% 95%;
+    --card: 180 35% 10%;
+    --card-foreground: 180 20% 95%;
 
-    --popover: 220 45% 10%;
-    --popover-foreground: 45 30% 95%;
+    --popover: 180 35% 10%;
+    --popover-foreground: 180 20% 95%;
 
-    --primary: 42 80% 55%;
-    --primary-foreground: 220 50% 10%;
+    --primary: 175 65% 50%;
+    --primary-foreground: 180 50% 8%;
 
-    --secondary: 220 40% 18%;
-    --secondary-foreground: 45 40% 85%;
+    --secondary: 180 35% 18%;
+    --secondary-foreground: 175 30% 85%;
 
-    --muted: 220 35% 14%;
-    --muted-foreground: 45 20% 60%;
+    --muted: 180 30% 14%;
+    --muted-foreground: 180 15% 60%;
 
-    --accent: 220 55% 45%;
-    --accent-foreground: 45 50% 95%;
+    --accent: 12 80% 55%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 60% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 40% 18%;
-    --input: 220 40% 18%;
-    --ring: 42 80% 55%;
+    --border: 180 30% 18%;
+    --input: 180 30% 18%;
+    --ring: 175 65% 50%;
 
-    --sidebar-background: 220 45% 10%;
-    --sidebar-foreground: 45 30% 90%;
-    --sidebar-primary: 42 80% 55%;
-    --sidebar-primary-foreground: 220 50% 10%;
-    --sidebar-accent: 220 40% 18%;
-    --sidebar-accent-foreground: 45 40% 85%;
-    --sidebar-border: 220 40% 15%;
-    --sidebar-ring: 42 80% 55%;
+    --sidebar-background: 180 35% 10%;
+    --sidebar-foreground: 180 20% 90%;
+    --sidebar-primary: 175 65% 50%;
+    --sidebar-primary-foreground: 180 50% 8%;
+    --sidebar-accent: 180 35% 18%;
+    --sidebar-accent-foreground: 175 30% 85%;
+    --sidebar-border: 180 30% 15%;
+    --sidebar-ring: 175 65% 50%;
 
-    --hero-gradient: linear-gradient(135deg, hsl(220 50% 20%) 0%, hsl(220 45% 30%) 50%, hsl(42 75% 50%) 100%);
+    --hero-gradient: linear-gradient(135deg, hsl(180 40% 15%) 0%, hsl(175 50% 30%) 50%, hsl(12 75% 50%) 100%);
     --card-shadow: 0 8px 32px -8px hsl(0 0% 0% / 0.5);
-    --card-shadow-hover: 0 20px 48px -12px hsl(42 80% 55% / 0.25);
+    --card-shadow-hover: 0 20px 48px -12px hsl(12 80% 55% / 0.25);
   }
 }
 
