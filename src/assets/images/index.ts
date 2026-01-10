@@ -21,6 +21,20 @@ import healthApps from './health-apps.jpg';
 import energyEfficient from './energy-efficient.jpg';
 import gamingSubscriptions from './gaming-subscriptions.jpg';
 import security from './security.jpg';
+// New images for updated articles
+import smartMoney from './smart-money.jpg';
+import smartBorrowing from './smart-borrowing.jpg';
+import dreamHome from './dream-home.jpg';
+import carFinancing from './car-financing.jpg';
+import streamingGuide from './streaming-guide.jpg';
+import musicDiscovery from './music-discovery.jpg';
+import gamingWorld from './gaming-world.jpg';
+import productivityBoost from './productivity-boost.jpg';
+import cloudBackup from './cloud-backup.jpg';
+import cyberProtection from './cyber-protection.jpg';
+import vpnPrivacy from './vpn-privacy.jpg';
+import virtualHealthcare from './virtual-healthcare.jpg';
+import wellnessTech from './wellness-tech.jpg';
 
 // Image mapping for articles
 export const articleImages: Record<string, string> = {
@@ -46,6 +60,20 @@ export const articleImages: Record<string, string> = {
   'energy-efficient': energyEfficient,
   'gaming-subscriptions': gamingSubscriptions,
   'security': security,
+  // New image mappings
+  'smart-money': smartMoney,
+  'smart-borrowing': smartBorrowing,
+  'dream-home': dreamHome,
+  'car-financing': carFinancing,
+  'streaming-guide': streamingGuide,
+  'music-discovery': musicDiscovery,
+  'gaming-world': gamingWorld,
+  'productivity-boost': productivityBoost,
+  'cloud-backup': cloudBackup,
+  'cyber-protection': cyberProtection,
+  'vpn-privacy': vpnPrivacy,
+  'virtual-healthcare': virtualHealthcare,
+  'wellness-tech': wellnessTech,
 };
 
 // Helper function to get image by key
@@ -76,4 +104,18 @@ export {
   energyEfficient,
   gamingSubscriptions,
   security,
+  // New exports
+  smartMoney,
+  smartBorrowing,
+  dreamHome,
+  carFinancing,
+  streamingGuide,
+  musicDiscovery,
+  gamingWorld,
+  productivityBoost,
+  cloudBackup,
+  cyberProtection,
+  vpnPrivacy,
+  virtualHealthcare,
+  wellnessTech,
 };
