@@ -333,10 +333,27 @@ const Index = () => {
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
                     <div className="relative h-full bg-card border border-border/50 rounded-3xl p-8 overflow-hidden transition-all duration-500 group-hover:border-primary/30 group-hover:shadow-2xl">
-                      {/* Gradient Icon Background */}
-                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                        <feature.icon className="w-7 h-7 text-white" />
-                      </div>
+                      {/* Gradient Icon Background with Jump & Rotate Animation */}
+                      <motion.div 
+                        className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 transition-all duration-300`}
+                        whileHover={{ 
+                          scale: 1.2,
+                          rotate: 360,
+                          y: -10,
+                        }}
+                        transition={{ 
+                          type: "spring", 
+                          stiffness: 400, 
+                          damping: 10,
+                          rotate: { duration: 0.6, ease: "easeInOut" }
+                        }}
+                      >
+                        <motion.div
+                          className="group-hover:animate-icon-bounce"
+                        >
+                          <feature.icon className="w-7 h-7 text-white" />
+                        </motion.div>
+                      </motion.div>
                       
                       <h3 className="font-display text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
                         {feature.title}
