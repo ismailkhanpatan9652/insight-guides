@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/articles/ArticleCard";
+import { ParticleBurst } from "@/components/ui/ParticleBurst";
 import { articles } from "@/data/articles";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import { 
@@ -34,24 +35,28 @@ const features = [
     title: "Unbiased Research",
     description: "Independent editorial content backed by thorough research and real-world testing.",
     gradient: "from-blue-500 to-cyan-400",
+    particleColors: ["#3b82f6", "#22d3ee", "#60a5fa"],
   },
   {
     icon: Zap,
     title: "Actionable Insights",
     description: "Clear, practical recommendations you can implement immediately.",
     gradient: "from-amber-500 to-orange-400",
+    particleColors: ["#f59e0b", "#fb923c", "#fbbf24"],
   },
   {
     icon: Globe,
     title: "Global Coverage",
     description: "Comprehensive guides covering services available worldwide.",
     gradient: "from-purple-500 to-pink-400",
+    particleColors: ["#a855f7", "#ec4899", "#d946ef"],
   },
   {
     icon: TrendingUp,
     title: "Always Current",
     description: "Content updated regularly to reflect the latest market changes.",
     gradient: "from-emerald-500 to-teal-400",
+    particleColors: ["#10b981", "#14b8a6", "#34d399"],
   },
 ];
 
@@ -324,53 +329,66 @@ const Index = () => {
             </AnimatedSection>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {features.map((feature, index) => (
-                <AnimatedSection key={feature.title}>
-                  <motion.div
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="group relative h-full"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                    <div className="relative h-full bg-card border border-border/50 rounded-3xl p-8 overflow-hidden transition-all duration-500 group-hover:border-primary/30 group-hover:shadow-2xl">
-                      {/* Gradient Icon Background with Jump & Rotate Animation */}
-                      <motion.div 
-                        className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 transition-all duration-300`}
-                        whileHover={{ 
-                          scale: 1.2,
-                          rotate: 360,
-                          y: -10,
-                        }}
-                        transition={{ 
-                          type: "spring", 
-                          stiffness: 400, 
-                          damping: 10,
-                          rotate: { duration: 0.6, ease: "easeInOut" }
-                        }}
-                      >
-                        <motion.div
-                          className="group-hover:animate-icon-bounce"
-                        >
-                          <feature.icon className="w-7 h-7 text-white" />
-                        </motion.div>
-                      </motion.div>
-                      
-                      <h3 className="font-display text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                        {feature.title}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {feature.description}
-                      </p>
-                      
-                      {/* Hover Arrow */}
-                      <div className="mt-6 flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                        <span className="text-sm font-medium">Learn more</span>
-                        <ArrowUpRight className="w-4 h-4" />
+              {features.map((feature, index) => {
+                const [isHovered, setIsHovered] = useState(false);
+                
+                return (
+                  <AnimatedSection key={feature.title}>
+                    <motion.div
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="group relative h-full"
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                      <div className="relative h-full bg-card border border-border/50 rounded-3xl p-8 overflow-hidden transition-all duration-500 group-hover:border-primary/30 group-hover:shadow-2xl">
+                        {/* Gradient Icon Background with Jump & Rotate Animation */}
+                        <div className="relative">
+                          <motion.div 
+                            className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 transition-all duration-300 z-10`}
+                            whileHover={{ 
+                              scale: 1.2,
+                              rotate: 360,
+                              y: -10,
+                            }}
+                            transition={{ 
+                              type: "spring", 
+                              stiffness: 400, 
+                              damping: 10,
+                              rotate: { duration: 0.6, ease: "easeInOut" }
+                            }}
+                          >
+                            <motion.div className="group-hover:animate-icon-bounce">
+                              <feature.icon className="w-7 h-7 text-white" />
+                            </motion.div>
+                            
+                            {/* Particle Burst Effect */}
+                            <ParticleBurst 
+                              isActive={isHovered} 
+                              colors={feature.particleColors}
+                              particleCount={14}
+                            />
+                          </motion.div>
+                        </div>
+                        
+                        <h3 className="font-display text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                          {feature.title}
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {feature.description}
+                        </p>
+                        
+                        {/* Hover Arrow */}
+                        <div className="mt-6 flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                          <span className="text-sm font-medium">Learn more</span>
+                          <ArrowUpRight className="w-4 h-4" />
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                </AnimatedSection>
-              ))}
+                    </motion.div>
+                  </AnimatedSection>
+                );
+              })}
             </div>
           </div>
         </section>
