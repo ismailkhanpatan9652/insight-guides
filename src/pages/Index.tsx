@@ -4,6 +4,9 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { FeatureCard } from "@/components/FeatureCard";
+import { BentoCard } from "@/components/ui/BentoCard";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { PulsingIcon } from "@/components/ui/PulsingIcon";
 import { articles } from "@/data/articles";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import { 
@@ -362,94 +365,196 @@ const Index = () => {
             <div className="grid grid-cols-12 gap-4 md:gap-6">
               {/* Large Featured Card */}
               <AnimatedSection className="col-span-12 md:col-span-8">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="group relative h-80 md:h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-8 cursor-pointer"
+                <BentoCard 
+                  className="h-80 md:h-96" 
+                  glowColor="rgba(139, 92, 246, 0.4)"
+                  enableTilt={true}
+                  enableShimmer={true}
                 >
-                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvZz48L3N2Zz4=')] opacity-50" />
-                  <div className="relative z-10 h-full flex flex-col justify-between">
-                    <div className="flex items-start justify-between">
-                      <Sparkles className="w-12 h-12 text-white/80" />
-                      <ArrowUpRight className="w-6 h-6 text-white/60 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  <div className="h-full rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-8">
+                    {/* Animated background pattern */}
+                    <div className="absolute inset-0 overflow-hidden">
+                      <motion.div
+                        className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvZz48L3N2Zz4=')] opacity-50"
+                        animate={{ 
+                          backgroundPosition: ["0px 0px", "60px 60px"],
+                        }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      />
                     </div>
-                    <div>
-                      <h3 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
-                        Curated Excellence
-                      </h3>
-                      <p className="text-white/70 text-lg max-w-lg">
-                        Every guide is meticulously researched and vetted by our expert team to ensure you get only the best recommendations.
-                      </p>
+                    
+                    <div className="relative z-10 h-full flex flex-col justify-between">
+                      <div className="flex items-start justify-between">
+                        <PulsingIcon color="rgba(255, 255, 255, 0.2)">
+                          <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                            <motion.div
+                              animate={{ rotate: [0, 10, -10, 0] }}
+                              transition={{ duration: 4, repeat: Infinity }}
+                            >
+                              <Sparkles className="w-7 h-7 text-white" />
+                            </motion.div>
+                          </div>
+                        </PulsingIcon>
+                        <motion.div
+                          whileHover={{ x: 5, y: -5 }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        >
+                          <ArrowUpRight className="w-6 h-6 text-white/60 group-hover:text-white transition-colors" />
+                        </motion.div>
+                      </div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        <h3 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+                          Curated Excellence
+                        </h3>
+                        <p className="text-white/70 text-lg max-w-lg">
+                          Every guide is meticulously researched and vetted by our expert team to ensure you get only the best recommendations.
+                        </p>
+                      </motion.div>
                     </div>
                   </div>
-                </motion.div>
+                </BentoCard>
               </AnimatedSection>
 
               {/* Stats Card */}
               <AnimatedSection className="col-span-12 md:col-span-4">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="group relative h-80 md:h-96 rounded-3xl overflow-hidden bg-card border border-border/50 p-8"
+                <BentoCard 
+                  className="h-80 md:h-96" 
+                  glowColor="rgba(16, 185, 129, 0.3)"
+                  enableTilt={true}
                 >
-                  <div className="h-full flex flex-col justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
-                      <TrendingUp className="w-6 h-6 text-emerald-500" />
+                  <div className="h-full rounded-3xl overflow-hidden bg-card border border-border/50 p-8">
+                    <div className="h-full flex flex-col justify-between">
+                      <PulsingIcon color="rgba(16, 185, 129, 0.15)">
+                        <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
+                          <motion.div
+                            animate={{ y: [0, -3, 0] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                          >
+                            <TrendingUp className="w-6 h-6 text-emerald-500" />
+                          </motion.div>
+                        </div>
+                      </PulsingIcon>
+                      <div>
+                        <div className="text-6xl md:text-7xl font-bold text-foreground mb-2">
+                          <AnimatedCounter target={98} suffix="%" duration={2.5} />
+                        </div>
+                        <p className="text-muted-foreground text-lg">Reader satisfaction rate across all our guides</p>
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-6xl md:text-7xl font-bold text-foreground mb-2">98%</div>
-                      <p className="text-muted-foreground text-lg">Reader satisfaction rate across all our guides</p>
+                  </div>
+                </BentoCard>
+              </AnimatedSection>
+
+              {/* Lightning Fast Card */}
+              <AnimatedSection className="col-span-6 md:col-span-4">
+                <BentoCard 
+                  className="h-64" 
+                  glowColor="rgba(245, 158, 11, 0.4)"
+                  enableTilt={true}
+                >
+                  <div className="h-full rounded-3xl overflow-hidden bg-gradient-to-br from-amber-500 to-orange-600 p-6 flex flex-col">
+                    <PulsingIcon color="rgba(255, 255, 255, 0.2)" size="sm">
+                      <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.2, 1],
+                            rotate: [0, 5, -5, 0],
+                          }}
+                          transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
+                        >
+                          <Zap className="w-5 h-5 text-white" />
+                        </motion.div>
+                      </div>
+                    </PulsingIcon>
+                    <div className="mt-auto">
+                      <h4 className="font-display text-xl font-bold text-white mb-2">Lightning Fast</h4>
+                      <p className="text-white/70 text-sm">Get insights in minutes, not hours</p>
                     </div>
                   </div>
-                </motion.div>
+                </BentoCard>
               </AnimatedSection>
 
-              {/* Two smaller cards */}
+              {/* Unbiased Card */}
               <AnimatedSection className="col-span-6 md:col-span-4">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="group relative h-64 rounded-3xl overflow-hidden bg-gradient-to-br from-amber-500 to-orange-600 p-6 cursor-pointer"
+                <BentoCard 
+                  className="h-64" 
+                  glowColor="rgba(6, 182, 212, 0.4)"
+                  enableTilt={true}
                 >
-                  <Zap className="w-10 h-10 text-white/80 mb-auto" />
-                  <div className="mt-auto">
-                    <h4 className="font-display text-xl font-bold text-white mb-2">Lightning Fast</h4>
-                    <p className="text-white/70 text-sm">Get insights in minutes, not hours</p>
+                  <div className="h-full rounded-3xl overflow-hidden bg-gradient-to-br from-cyan-500 to-blue-600 p-6 flex flex-col">
+                    <PulsingIcon color="rgba(255, 255, 255, 0.2)" size="sm">
+                      <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.1, 1],
+                          }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          <Shield className="w-5 h-5 text-white" />
+                        </motion.div>
+                      </div>
+                    </PulsingIcon>
+                    <div className="mt-auto">
+                      <h4 className="font-display text-xl font-bold text-white mb-2">100% Unbiased</h4>
+                      <p className="text-white/70 text-sm">No sponsored content, ever</p>
+                    </div>
                   </div>
-                </motion.div>
+                </BentoCard>
               </AnimatedSection>
 
-              <AnimatedSection className="col-span-6 md:col-span-4">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="group relative h-64 rounded-3xl overflow-hidden bg-gradient-to-br from-cyan-500 to-blue-600 p-6 cursor-pointer"
-                >
-                  <Shield className="w-10 h-10 text-white/80 mb-auto" />
-                  <div className="mt-auto">
-                    <h4 className="font-display text-xl font-bold text-white mb-2">100% Unbiased</h4>
-                    <p className="text-white/70 text-sm">No sponsored content, ever</p>
-                  </div>
-                </motion.div>
-              </AnimatedSection>
-
+              {/* Testimonial Card */}
               <AnimatedSection className="col-span-12 md:col-span-4">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="group relative h-64 rounded-3xl overflow-hidden bg-card border border-border/50 p-6"
+                <BentoCard 
+                  className="h-64" 
+                  glowColor="rgba(251, 191, 36, 0.3)"
+                  enableTilt={true}
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="w-6 h-6 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  <blockquote className="text-foreground text-lg font-medium mb-4">
-                    "The best resource for making informed digital decisions."
-                  </blockquote>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">T</div>
-                    <div>
-                      <div className="font-medium text-foreground">Tech Weekly</div>
-                      <div className="text-sm text-muted-foreground">Featured Review</div>
+                  <div className="h-full rounded-3xl overflow-hidden bg-card border border-border/50 p-6 flex flex-col">
+                    <div className="flex items-center gap-1 mb-4">
+                      {[1, 2, 3, 4, 5].map((star, i) => (
+                        <motion.div
+                          key={star}
+                          initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                          transition={{ delay: i * 0.1, type: "spring", stiffness: 200 }}
+                        >
+                          <motion.div
+                            animate={{ 
+                              scale: [1, 1.2, 1],
+                            }}
+                            transition={{ 
+                              duration: 0.5, 
+                              repeat: Infinity, 
+                              repeatDelay: 3,
+                              delay: i * 0.1 
+                            }}
+                          >
+                            <Star className="w-6 h-6 fill-amber-400 text-amber-400" />
+                          </motion.div>
+                        </motion.div>
+                      ))}
+                    </div>
+                    <blockquote className="text-foreground text-lg font-medium mb-4 flex-1">
+                      "The best resource for making informed digital decisions."
+                    </blockquote>
+                    <div className="flex items-center gap-3">
+                      <motion.div 
+                        className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold"
+                        whileHover={{ scale: 1.1, rotate: 10 }}
+                      >
+                        T
+                      </motion.div>
+                      <div>
+                        <div className="font-medium text-foreground">Tech Weekly</div>
+                        <div className="text-sm text-muted-foreground">Featured Review</div>
+                      </div>
                     </div>
                   </div>
-                </motion.div>
+                </BentoCard>
               </AnimatedSection>
             </div>
           </div>
