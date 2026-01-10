@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navigation = [
@@ -25,10 +25,7 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <nav className="container-wide flex items-center justify-between py-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center transition-transform group-hover:scale-105">
-            <Globe className="w-5 h-5 text-primary-foreground" />
-          </div>
+        <Link to="/" className="flex items-center group">
           <span className="font-display text-xl font-semibold text-foreground">
             Dativa
           </span>
