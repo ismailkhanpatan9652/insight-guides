@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { SnowToggle } from "@/components/ui/SnowToggle";
+import { useSnow } from "@/components/SnowProvider";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -15,6 +16,7 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { isSnowing, toggleSnow } = useSnow();
 
   const isActive = (path: string) => {
     if (path === "/") return location.pathname === "/";
@@ -47,12 +49,12 @@ export function Header() {
               </Button>
             </Link>
           ))}
-          <ThemeToggle />
+          <SnowToggle isSnowing={isSnowing} onToggle={toggleSnow} />
         </div>
 
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
+          <SnowToggle isSnowing={isSnowing} onToggle={toggleSnow} />
           <Button
             variant="ghost"
             size="icon"
