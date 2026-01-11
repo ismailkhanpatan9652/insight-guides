@@ -18,7 +18,7 @@ const Disclaimer = () => {
 
             <h2>General Information Disclaimer</h2>
             <p>
-              The information provided on Niarticles is for general informational and educational 
+              The information provided on Mallinova is for general informational and educational 
               purposes only. While we strive to provide accurate and up-to-date information, we make 
               no representations or warranties of any kind, express or implied, about the completeness, 
               accuracy, reliability, suitability, or availability of the information, products, 
@@ -49,7 +49,7 @@ const Disclaimer = () => {
 
             <h2>Affiliate Disclosure</h2>
             <p>
-              Niarticles participates in affiliate marketing programs. This means that some links 
+              Mallinova participates in affiliate marketing programs. This means that some links 
               on our website are affiliate links, and we may earn a commission if you click through 
               and make a purchase. This comes at no additional cost to you.
             </p>
@@ -139,7 +139,7 @@ const Disclaimer = () => {
               If you have questions about this disclaimer or our content practices, please contact us at:
             </p>
             <p>
-              Email: contact@niarticles.com
+              Email: contact@mallinova.shop
             </p>
           </article>
         </div>

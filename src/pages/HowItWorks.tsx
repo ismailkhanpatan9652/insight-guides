@@ -134,7 +134,7 @@ const HowItWorks = () => {
             <div className="bg-card p-8 rounded-2xl border border-border/50 shadow-card">
               <div className="prose-article">
                 <p>
-                  Niarticles is supported through affiliate partnerships. When we link to 
+                  Mallinova is supported through affiliate partnerships. When we link to 
                   products or services in our content, we may earn a commission if you make 
                   a purchase through those links.
                 </p>

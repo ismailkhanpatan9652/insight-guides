@@ -17,7 +17,7 @@ const Terms = () => {
             </p>
 
             <p>
-              Welcome to Niarticles. These Terms and Conditions govern your use of our website 
+              Welcome to Mallinova. These Terms and Conditions govern your use of our website 
               and services. By accessing or using our website, you agree to be bound by these terms.
             </p>
 
@@ -30,7 +30,7 @@ const Terms = () => {
 
             <h2>Description of Service</h2>
             <p>
-              Niarticles is an informational content platform that publishes articles, guides, and 
+              Mallinova is an informational content platform that publishes articles, guides, and 
               insights about digital services and products. Our content is intended for educational 
               and informational purposes only.
             </p>
@@ -38,7 +38,7 @@ const Terms = () => {
             <h2>Use of Content</h2>
             <p>
               All content on this website, including text, graphics, logos, and images, is the 
-              property of Niarticles or its content suppliers and is protected by copyright laws.
+              property of Mallinova or its content suppliers and is protected by copyright laws.
             </p>
             <p>You may:</p>
             <ul>
@@ -76,7 +76,7 @@ const Terms = () => {
 
             <h2>No Affiliation with Brands</h2>
             <p>
-              Niarticles is an independent content platform. We are not affiliated with, endorsed 
+              Mallinova is an independent content platform. We are not affiliated with, endorsed 
               by, or officially connected to any of the brands, companies, or services mentioned 
               in our content unless explicitly stated otherwise.
             </p>
@@ -101,7 +101,7 @@ const Terms = () => {
 
             <h2>Limitation of Liability</h2>
             <p>
-              To the fullest extent permitted by law, Niarticles shall not be liable for any direct, 
+              To the fullest extent permitted by law, Mallinova shall not be liable for any direct, 
               indirect, incidental, special, consequential, or punitive damages arising from:
             </p>
             <ul>
@@ -113,7 +113,7 @@ const Terms = () => {
 
             <h2>Indemnification</h2>
             <p>
-              You agree to indemnify and hold harmless Niarticles, its owners, employees, and 
+              You agree to indemnify and hold harmless Mallinova, its owners, employees, and 
               affiliates from any claims, damages, or expenses arising from your use of the website 
               or violation of these terms.
             </p>
@@ -142,7 +142,7 @@ const Terms = () => {
               If you have any questions about these Terms and Conditions, please contact us at:
             </p>
             <p>
-              Email: contact@niarticles.com
+              Email: contact@mallinova.shop
             </p>
           </article>
         </div>

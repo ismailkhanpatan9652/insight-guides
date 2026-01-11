@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
             </p>
 
             <p>
-              At Niarticles, we take your privacy seriously. This Privacy Policy explains how we 
+              At Mallinova, we take your privacy seriously. This Privacy Policy explains how we 
               collect, use, disclose, and safeguard your information when you visit our website. 
               Please read this policy carefully to understand our practices regarding your data.
             </p>
@@ -144,7 +144,7 @@ const PrivacyPolicy = () => {
               rights, please contact us at:
             </p>
             <p>
-              Email: contact@niarticles.com
+              Email: contact@mallinova.shop
             </p>
           </article>
         </div>
