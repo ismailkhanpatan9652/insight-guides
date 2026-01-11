@@ -17,7 +17,7 @@ const EditorialPolicy = () => {
             </p>
 
             <p>
-              At Niarticles, we are committed to providing valuable, accurate, and unbiased content 
+              At Mallinova, we are committed to providing valuable, accurate, and unbiased content 
               to help our readers make informed decisions about digital services. This Editorial 
               Policy outlines the principles and standards that guide our content creation.
             </p>
@@ -31,7 +31,7 @@ const EditorialPolicy = () => {
 
             <h2>Editorial Independence</h2>
             <p>
-              Editorial decisions at Niarticles are made independently of commercial considerations. 
+              Editorial decisions at Mallinova are made independently of commercial considerations. 
               Our content team operates with full editorial freedom to:
             </p>
             <ul>
@@ -161,7 +161,7 @@ const EditorialPolicy = () => {
               For questions about our editorial policy or to provide feedback, please contact us at:
             </p>
             <p>
-              Email: contact@niarticles.com
+              Email: contact@mallinova.shop
             </p>
           </article>
         </div>

@@ -30,7 +30,7 @@ const About = () => {
   return (
     <Layout>
       <PageHero 
-        title="About Dativa"
+        title="About Mallinova"
         subtitle="An independent content platform dedicated to helping users understand digital services and make informed decisions."
       />
 
@@ -44,7 +44,7 @@ const About = () => {
               </h2>
               <div className="prose-article">
                 <p>
-                  Dativa was founded with a clear purpose: to provide reliable, well-researched 
+                  Mallinova was founded with a clear purpose: to provide reliable, well-researched 
                   information about digital services that helps consumers make informed decisions.
                 </p>
                 <p>
