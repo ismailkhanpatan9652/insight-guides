@@ -464,32 +464,6 @@ const Index = () => {
                   </Link>
                 </MagneticElement>
 
-                <MagneticElement>
-                  <Link to="/about">
-                    <motion.button
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="group px-8 py-4 text-lg font-medium text-foreground rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all relative overflow-hidden"
-                    >
-                      {/* Animated border gradient on hover */}
-                      <motion.span
-                        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"
-                        style={{
-                          background: "linear-gradient(90deg, hsl(262 83% 58% / 0.1), hsl(186 100% 42% / 0.1), hsl(262 83% 58% / 0.1))",
-                        }}
-                      />
-                      <span className="relative z-10 flex items-center gap-3">
-                        Free Financial Tools
-                        <motion.span
-                          whileHover={{ rotate: 15, scale: 1.1 }}
-                          transition={{ type: "spring", stiffness: 300 }}
-                        >
-                          <Wallet className="w-5 h-5" />
-                        </motion.span>
-                      </span>
-                    </motion.button>
-                  </Link>
-                </MagneticElement>
               </motion.div>
 
               {/* Stats with enhanced styling */}
