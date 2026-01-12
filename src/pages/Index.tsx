@@ -43,42 +43,21 @@ const expertise = [
   { value: 12, suffix: "+", label: "Years Experience" },
 ];
 
-const pillars = [
+const journeySteps = [
   {
-    icon: Globe,
-    title: "Global Perspective",
-    subtitle: "Worldwide Intelligence",
-    description: "Access insights curated from leading experts across 50+ countries, bringing you a truly global viewpoint.",
-    stats: "50+ Countries",
-    gradient: "from-cyan-400 via-blue-500 to-indigo-600",
-    glowColor: "rgba(56, 189, 248, 0.4)",
+    number: "01",
+    title: "Discover",
+    description: "Explore our curated library of expert insights across finance, technology, and lifestyle.",
   },
   {
-    icon: Brain,
-    title: "AI-Powered Analysis",
-    subtitle: "Smart Recommendations",
-    description: "Our proprietary algorithms analyze thousands of data points to surface the most relevant insights for you.",
-    stats: "10M+ Data Points",
-    gradient: "from-violet-400 via-purple-500 to-fuchsia-600",
-    glowColor: "rgba(168, 85, 247, 0.4)",
+    number: "02", 
+    title: "Learn",
+    description: "Dive deep into comprehensive guides crafted by industry specialists.",
   },
   {
-    icon: Lock,
-    title: "Verified Sources",
-    subtitle: "Trust & Authenticity",
-    description: "Every piece of content undergoes rigorous fact-checking by our editorial team before publication.",
-    stats: "100% Verified",
-    gradient: "from-emerald-400 via-green-500 to-teal-600",
-    glowColor: "rgba(16, 185, 129, 0.4)",
-  },
-  {
-    icon: Timer,
-    title: "Real-Time Updates",
-    subtitle: "Always Current",
-    description: "Stay ahead with instant updates on market trends, industry news, and emerging opportunities.",
-    stats: "24/7 Monitoring",
-    gradient: "from-orange-400 via-amber-500 to-yellow-500",
-    glowColor: "rgba(251, 146, 60, 0.4)",
+    number: "03",
+    title: "Decide",
+    description: "Make informed choices backed by unbiased research and real data.",
   },
 ];
 
@@ -482,33 +461,20 @@ const Index = () => {
           </motion.div>
         </section>
 
-        {/* ============= PILLARS SECTION - Premium Bento Grid ============= */}
-        <section className="relative py-32 bg-gradient-to-b from-background via-muted/20 to-background overflow-hidden">
-          {/* Animated mesh gradient background */}
+        {/* ============= YOUR JOURNEY SECTION - Cinematic Timeline ============= */}
+        <section className="relative py-32 bg-background overflow-hidden">
+          {/* Dramatic lighting effect */}
           <div className="absolute inset-0">
             <motion.div
-              className="absolute top-0 left-0 w-[800px] h-[800px] opacity-30"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px]"
               style={{
-                background: "radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 60%)",
-                filter: "blur(80px)",
+                background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.08) 0%, transparent 70%)",
               }}
               animate={{
-                x: [0, 100, 0],
-                y: [0, 50, 0],
+                scale: [1, 1.1, 1],
+                opacity: [0.5, 0.8, 0.5],
               }}
-              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-              className="absolute bottom-0 right-0 w-[700px] h-[700px] opacity-25"
-              style={{
-                background: "radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 60%)",
-                filter: "blur(80px)",
-              }}
-              animate={{
-                x: [0, -80, 0],
-                y: [0, -60, 0],
-              }}
-              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 8, repeat: Infinity }}
             />
           </div>
           
@@ -516,190 +482,155 @@ const Index = () => {
 
           <div className="container-wide px-6 relative z-10">
             <RevealSection>
-              <div className="text-center max-w-4xl mx-auto mb-20">
-                <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              <div className="text-center max-w-3xl mx-auto mb-24">
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 mb-8"
+                  className="inline-block text-primary text-sm font-semibold tracking-[0.3em] uppercase mb-6"
                 >
-                  <Layers className="w-8 h-8 text-primary" />
-                </motion.div>
+                  The Experience
+                </motion.span>
                 <motion.h2 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
+                  transition={{ delay: 0.1 }}
                   viewport={{ once: true }}
-                  className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6"
+                  className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground"
                 >
-                  The Four
-                  <span className="block mt-2">
-                    <span className="relative">
-                      <span className="text-gradient">Pillars</span>
-                      <motion.span
-                        className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-primary via-violet-500 to-primary rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "100%" }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                        viewport={{ once: true }}
-                      />
-                    </span>
-                  </span>
+                  Your Journey
+                  <span className="block mt-2 text-gradient">Starts Here</span>
                 </motion.h2>
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                  viewport={{ once: true }}
-                  className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto"
-                >
-                  Our foundation is built on four essential principles that guide every insight we deliver.
-                </motion.p>
               </div>
             </RevealSection>
 
-            {/* Premium Bento Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-              {pillars.map((pillar, index) => (
-                <RevealSection key={pillar.title} delay={index * 0.15}>
-                  <motion.div
-                    className="group relative"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                  >
-                    {/* Glow effect on hover */}
-                    <motion.div
-                      className="absolute -inset-0.5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
-                      style={{ background: pillar.glowColor }}
-                    />
-                    
-                    {/* Animated border */}
-                    <motion.div
-                      className="absolute -inset-[1px] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{
-                        background: `linear-gradient(135deg, ${pillar.glowColor}, transparent, ${pillar.glowColor})`,
-                        backgroundSize: "300% 300%",
-                      }}
-                      animate={{
-                        backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-                      }}
-                      transition={{ duration: 4, repeat: Infinity }}
-                    />
-                    
-                    {/* Card content */}
-                    <div className="relative h-full p-8 md:p-10 rounded-3xl bg-card/80 backdrop-blur-xl border border-border/50 overflow-hidden">
-                      {/* Decorative corner gradient */}
-                      <div 
-                        className="absolute top-0 right-0 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity duration-500"
-                        style={{
-                          background: `radial-gradient(circle at top right, ${pillar.glowColor} 0%, transparent 60%)`,
-                        }}
-                      />
-                      
-                      {/* Floating particles on hover */}
-                      <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-                        {[...Array(5)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="absolute w-1 h-1 rounded-full"
-                            style={{ 
-                              background: pillar.glowColor,
-                              left: `${20 + Math.random() * 60}%`,
-                            }}
-                            initial={{ y: "100%", opacity: 0 }}
-                            animate={{ 
-                              y: "-50%", 
-                              opacity: [0, 1, 0],
-                            }}
-                            transition={{ 
-                              duration: 2 + Math.random(), 
-                              repeat: Infinity,
-                              delay: i * 0.4,
-                              ease: "easeOut"
-                            }}
-                          />
-                        ))}
-                      </div>
+            {/* Horizontal Timeline */}
+            <div className="relative">
+              {/* Connecting line */}
+              <motion.div
+                className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: 0.5 }}
+              />
 
-                      <div className="relative z-10 flex flex-col h-full">
-                        {/* Icon with gradient background */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4">
+                {journeySteps.map((step, index) => (
+                  <RevealSection key={step.number} delay={index * 0.2}>
+                    <motion.div
+                      className="group relative"
+                      whileHover={{ y: -8 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      {/* Vertical connector for mobile */}
+                      {index < journeySteps.length - 1 && (
+                        <div className="lg:hidden absolute left-1/2 bottom-0 w-px h-8 -mb-8 bg-gradient-to-b from-primary/30 to-transparent transform -translate-x-1/2" />
+                      )}
+
+                      <div className="relative p-8 lg:p-10 text-center">
+                        {/* Glowing number */}
                         <motion.div
-                          className={`w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br ${pillar.gradient} flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-shadow duration-500`}
-                          whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                          transition={{ duration: 0.5 }}
-                          style={{
-                            boxShadow: `0 10px 40px -10px ${pillar.glowColor}`,
-                          }}
+                          className="relative inline-block mb-8"
+                          whileHover={{ scale: 1.1 }}
                         >
-                          <pillar.icon className="w-8 h-8 text-white" />
-                        </motion.div>
-                        
-                        {/* Subtitle */}
-                        <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
-                          {pillar.subtitle}
-                        </span>
-                        
-                        {/* Title */}
-                        <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 group-hover:text-gradient transition-all duration-300">
-                          {pillar.title}
-                        </h3>
-                        
-                        {/* Description */}
-                        <p className="text-muted-foreground leading-relaxed mb-6 flex-grow">
-                          {pillar.description}
-                        </p>
-                        
-                        {/* Stats badge */}
-                        <div className="flex items-center justify-between">
+                          {/* Glow ring */}
                           <motion.div
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 border border-border/50"
-                            whileHover={{ scale: 1.05 }}
-                          >
-                            <BadgeCheck className="w-4 h-4 text-primary" />
-                            <span className="text-sm font-semibold text-foreground">{pillar.stats}</span>
-                          </motion.div>
+                            className="absolute inset-0 rounded-full bg-primary/20 blur-xl"
+                            animate={{
+                              scale: [1, 1.3, 1],
+                              opacity: [0.3, 0.6, 0.3],
+                            }}
+                            transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                          />
                           
-                          {/* Arrow indicator */}
+                          {/* Number container */}
+                          <div className="relative w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-gradient-to-br from-background via-card to-background border-2 border-primary/30 flex items-center justify-center group-hover:border-primary/60 transition-colors duration-500">
+                            <span className="text-3xl lg:text-4xl font-display font-bold text-gradient">
+                              {step.number}
+                            </span>
+                          </div>
+
+                          {/* Orbiting dot */}
                           <motion.div
-                            className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity"
-                            initial={{ x: -10 }}
-                            whileHover={{ x: 0 }}
+                            className="absolute w-2 h-2 rounded-full bg-primary shadow-lg shadow-primary/50"
+                            style={{
+                              top: "50%",
+                              left: "50%",
+                            }}
+                            animate={{
+                              rotate: 360,
+                            }}
+                            transition={{
+                              duration: 8,
+                              repeat: Infinity,
+                              ease: "linear",
+                              delay: index * 0.3,
+                            }}
                           >
-                            <span className="text-sm font-medium">Explore</span>
-                            <ArrowUpRight className="w-4 h-4" />
+                            <motion.div
+                              style={{
+                                position: "absolute",
+                                left: 45,
+                                top: -4,
+                              }}
+                            />
                           </motion.div>
-                        </div>
+                        </motion.div>
+
+                        {/* Title with animated underline */}
+                        <h3 className="relative inline-block text-2xl lg:text-3xl font-display font-bold text-foreground mb-4">
+                          {step.title}
+                          <motion.span
+                            className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-full"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: "100%" }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.8 + index * 0.2, duration: 0.6 }}
+                          />
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                          {step.description}
+                        </p>
+
+                        {/* Hover effect card background */}
+                        <motion.div
+                          className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+                        />
                       </div>
-                    </div>
-                  </motion.div>
-                </RevealSection>
-              ))}
+                    </motion.div>
+                  </RevealSection>
+                ))}
+              </div>
             </div>
 
-            {/* Trust indicators */}
-            <RevealSection delay={0.6}>
+            {/* Bottom CTA */}
+            <RevealSection delay={0.8}>
               <motion.div
-                className="mt-16 flex flex-wrap items-center justify-center gap-8 text-muted-foreground"
+                className="mt-20 text-center"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
                 viewport={{ once: true }}
               >
-                {[
-                  { icon: CheckCircle2, text: "Fact-Checked Content" },
-                  { icon: Award, text: "Award-Winning Team" },
-                  { icon: Users, text: "Expert Contributors" },
-                ].map((item, i) => (
-                  <motion.div
-                    key={item.text}
-                    className="flex items-center gap-2"
-                    whileHover={{ scale: 1.05, color: "hsl(var(--foreground))" }}
-                  >
-                    <item.icon className="w-5 h-5 text-primary" />
-                    <span className="text-sm font-medium">{item.text}</span>
-                  </motion.div>
-                ))}
+                <MagneticElement>
+                  <Link to="/how-it-works">
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group inline-flex items-center gap-3 px-8 py-4 rounded-full border border-primary/30 hover:border-primary/60 bg-primary/5 hover:bg-primary/10 text-foreground font-semibold transition-all duration-300"
+                    >
+                      <span>See How It Works</span>
+                      <motion.div
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        <ArrowRight className="w-5 h-5 text-primary" />
+                      </motion.div>
+                    </motion.button>
+                  </Link>
+                </MagneticElement>
               </motion.div>
             </RevealSection>
           </div>
