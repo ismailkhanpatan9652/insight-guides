@@ -31,62 +31,70 @@ import {
   CircleDot,
   Lightbulb,
   Timer,
-  BadgeCheck
+  BadgeCheck,
+  Wallet,
+  LineChart,
+  PiggyBank
 } from "lucide-react";
 
-// ============= DATA =============
+// Import generated images
+import heroWealthImage from "@/assets/images/hero-wealth.jpg";
+import digitalInnovationImage from "@/assets/images/digital-innovation.jpg";
+import investmentInsightsImage from "@/assets/images/investment-insights.jpg";
+
+// ============= SEO-OPTIMIZED DATA =============
 
 const expertise = [
-  { value: 150, suffix: "K+", label: "Monthly Readers" },
-  { value: 500, suffix: "+", label: "Expert Guides" },
-  { value: 4.9, suffix: "", label: "User Rating", decimal: true },
-  { value: 12, suffix: "+", label: "Years Experience" },
+  { value: 250, suffix: "K+", label: "Smart Investors" },
+  { value: 850, suffix: "+", label: "Financial Guides" },
+  { value: 4.9, suffix: "/5", label: "Trust Score", decimal: true },
+  { value: 15, suffix: "+", label: "Years Expertise" },
 ];
 
 const journeySteps = [
   {
     number: "01",
-    title: "Discover",
-    description: "Explore our curated library of expert insights across finance, technology, and lifestyle.",
+    title: "Research",
+    description: "Access comprehensive financial planning resources, investment strategies, and wealth management guides.",
   },
   {
     number: "02", 
-    title: "Learn",
-    description: "Dive deep into comprehensive guides crafted by industry specialists.",
+    title: "Compare",
+    description: "Evaluate top-rated financial products, credit cards, loans, and investment platforms side-by-side.",
   },
   {
     number: "03",
-    title: "Decide",
-    description: "Make informed choices backed by unbiased research and real data.",
+    title: "Prosper",
+    description: "Make data-driven financial decisions that maximize returns and secure your financial future.",
   },
 ];
 
 const testimonials = [
   {
-    quote: "Mallinova transformed how I approach financial decisions. Their insights are unmatched in depth and clarity.",
-    author: "Alexandra Chen",
-    role: "Investment Director",
-    company: "Apex Ventures",
+    quote: "NexusFinance helped me build a six-figure investment portfolio. Their stock market analysis and retirement planning guides are unmatched.",
+    author: "David Richardson",
+    role: "Portfolio Manager",
+    company: "Pinnacle Wealth",
   },
   {
-    quote: "The quality of research here rivals what you'd pay thousands for at consulting firms. Absolutely invaluable.",
-    author: "Marcus Williams",
-    role: "CEO",
-    company: "TechForward Inc.",
+    quote: "The best personal finance resource I've found. Their credit score improvement tips saved me thousands on my mortgage rate.",
+    author: "Jennifer Walsh",
+    role: "Real Estate Investor",
+    company: "Walsh Properties",
   },
   {
-    quote: "I've saved countless hours and made better choices thanks to their expertly curated guides.",
-    author: "Sophia Martinez",
-    role: "Entrepreneur",
-    company: "Bloom Studios",
+    quote: "From budgeting basics to advanced tax strategies, NexusFinance covers everything a savvy investor needs to know.",
+    author: "Michael Torres",
+    role: "Financial Advisor",
+    company: "Torres Financial Group",
   },
 ];
 
 const categories = [
-  { name: "Finance", icon: TrendingUp, count: 87 },
-  { name: "Technology", icon: Zap, count: 124 },
-  { name: "Lifestyle", icon: Heart, count: 63 },
-  { name: "Business", icon: Target, count: 95 },
+  { name: "Investing", icon: LineChart, count: 156 },
+  { name: "Banking", icon: PiggyBank, count: 89 },
+  { name: "Credit Cards", icon: Wallet, count: 124 },
+  { name: "Wealth Building", icon: TrendingUp, count: 203 },
 ];
 
 // ============= UTILITY COMPONENTS =============
@@ -335,12 +343,12 @@ const Index = () => {
                   whileHover={{ scale: 1.05 }}
                   className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-primary/5 border border-primary/20"
                 >
-                  <Leaf className="w-4 h-4 text-primary" />
-                  <span className="text-sm font-medium text-primary tracking-wide">Trusted by 150,000+ Readers Worldwide</span>
+                  <TrendingUp className="w-4 h-4 text-primary" />
+                  <span className="text-sm font-medium text-primary tracking-wide">Trusted by 250,000+ Smart Investors</span>
                 </motion.div>
               </motion.div>
 
-              {/* Main heading */}
+              {/* Main heading - SEO optimized */}
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -348,7 +356,7 @@ const Index = () => {
                 className="text-center mb-10"
               >
                 <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.1] tracking-tight mb-8">
-                  Where Wisdom
+                  Master Your
                   <br />
                   <span className="relative inline-block">
                     <motion.span 
@@ -359,7 +367,7 @@ const Index = () => {
                       transition={{ duration: 6, repeat: Infinity }}
                       style={{ backgroundSize: "200% auto" }}
                     >
-                      Meets Clarity
+                      Financial Future
                     </motion.span>
                   </span>
                 </h1>
@@ -370,7 +378,7 @@ const Index = () => {
                   transition={{ delay: 0.8 }}
                   className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
                 >
-                  Discover expertly curated guides, unbiased reviews, and strategic insights designed for the modern decision-maker.
+                  Expert investment strategies, personal finance tips, and wealth-building guides to help you achieve financial independence.
                 </motion.p>
               </motion.div>
 
@@ -395,7 +403,7 @@ const Index = () => {
                         transition={{ duration: 0.6 }}
                       />
                       <span className="relative z-10 flex items-center gap-3">
-                        Explore Insights
+                        Explore Investment Guides
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </span>
                     </motion.button>
@@ -410,8 +418,8 @@ const Index = () => {
                       className="group px-8 py-4 text-lg font-medium text-foreground rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all"
                     >
                       <span className="flex items-center gap-3">
-                        Our Philosophy
-                        <Compass className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+                        Free Financial Tools
+                        <Wallet className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                       </span>
                     </motion.button>
                   </Link>
@@ -489,7 +497,7 @@ const Index = () => {
                   viewport={{ once: true }}
                   className="inline-block text-primary text-sm font-semibold tracking-[0.3em] uppercase mb-6"
                 >
-                  The Experience
+                  Your Wealth Journey
                 </motion.span>
                 <motion.h2 
                   initial={{ opacity: 0, y: 20 }}
@@ -498,8 +506,8 @@ const Index = () => {
                   viewport={{ once: true }}
                   className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground"
                 >
-                  Your Journey
-                  <span className="block mt-2 text-gradient">Starts Here</span>
+                  Build Wealth
+                  <span className="block mt-2 text-gradient">With Confidence</span>
                 </motion.h2>
               </div>
             </RevealSection>
@@ -651,12 +659,12 @@ const Index = () => {
                     transition={{ type: "spring", stiffness: 200, damping: 15 }}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 mb-6"
                   >
-                    <BookOpen className="w-4 h-4 text-accent" />
-                    <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Editor's Picks</span>
+                    <LineChart className="w-4 h-4 text-accent" />
+                    <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Top Rated Guides</span>
                   </motion.div>
                   <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-                    Featured
-                    <span className="text-gradient ml-2">Insights</span>
+                    Financial
+                    <span className="text-gradient ml-2">Resources</span>
                   </h2>
                 </div>
                 <MagneticElement>
@@ -666,7 +674,7 @@ const Index = () => {
                       whileTap={{ scale: 0.95 }}
                       className="group flex items-center gap-2 px-6 py-3 rounded-full bg-card border border-border text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all"
                     >
-                      View All Insights
+                      View All Resources
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </motion.button>
                   </Link>
@@ -726,15 +734,15 @@ const Index = () => {
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/20 mb-6"
                 >
-                  <Heart className="w-4 h-4 text-rose-500" />
-                  <span className="text-sm font-semibold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Testimonials</span>
+                  <Star className="w-4 h-4 text-rose-500" />
+                  <span className="text-sm font-semibold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Success Stories</span>
                 </motion.div>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                  Voices of
-                  <span className="text-gradient ml-2">Trust</span>
+                  Real Investors,
+                  <span className="text-gradient ml-2">Real Results</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Hear from industry leaders and discerning readers who've transformed their decisions with Mallinova.
+                  Discover how thousands of investors have transformed their financial futures with our expert guidance on stocks, ETFs, and retirement planning.
                 </p>
               </div>
             </RevealSection>
@@ -782,21 +790,21 @@ const Index = () => {
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
                 >
                   <Award className="w-4 h-4 text-primary" />
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">Why Mallinova</span>
+                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">Why NexusFinance</span>
                 </motion.div>
                 <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-                  The Standard of
-                  <span className="text-gradient ml-2">Excellence</span>
+                  Your Trusted
+                  <span className="text-gradient ml-2">Financial Partner</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-                  We don't just deliver information—we craft experiences that elevate your understanding and refine your approach to every decision.
+                  We provide unbiased, data-driven financial advice covering investment portfolios, passive income strategies, credit optimization, and tax-efficient wealth building.
                 </p>
 
                 <div className="space-y-6">
                   {[
-                    { icon: BadgeCheck, title: "Verified Expertise", desc: "Every guide is reviewed by industry specialists" },
-                    { icon: Timer, title: "Always Current", desc: "Content updated weekly to reflect latest trends" },
-                    { icon: Lock, title: "Complete Independence", desc: "No sponsored content or hidden affiliations" },
+                    { icon: BadgeCheck, title: "CFA-Certified Analysis", desc: "Expert reviews by certified financial analysts and advisors" },
+                    { icon: Timer, title: "Real-Time Market Data", desc: "Live updates on stocks, bonds, crypto, and global markets" },
+                    { icon: Lock, title: "Zero Sponsored Content", desc: "100% independent reviews with no paid promotions" },
                   ].map((item, i) => (
                     <motion.div
                       key={item.title}
@@ -821,10 +829,10 @@ const Index = () => {
               <RevealSection delay={0.2}>
                 <div className="grid grid-cols-2 gap-5">
                   {[
-                    { label: "Satisfaction Rate", value: "99.2%", color: "from-emerald-500 to-teal-600" },
-                    { label: "Articles Published", value: "500+", color: "from-amber-500 to-yellow-600" },
-                    { label: "Countries Reached", value: "87", color: "from-violet-500 to-purple-600" },
-                    { label: "Awards Won", value: "12", color: "from-rose-500 to-pink-600" },
+                    { label: "ROI Improvement", value: "127%", color: "from-emerald-500 to-teal-600" },
+                    { label: "Guides Published", value: "850+", color: "from-amber-500 to-yellow-600" },
+                    { label: "Countries Served", value: "94", color: "from-violet-500 to-purple-600" },
+                    { label: "Industry Awards", value: "18", color: "from-rose-500 to-pink-600" },
                   ].map((stat, i) => (
                     <motion.div
                       key={stat.label}
@@ -876,13 +884,13 @@ const Index = () => {
                 </motion.div>
 
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
-                  Begin Your Journey to
+                  Start Building Your
                   <br />
-                  <span className="text-gradient">Smarter Decisions</span>
+                  <span className="text-gradient">Investment Portfolio</span>
                 </h2>
 
                 <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-                  Join over 150,000 discerning readers who trust Mallinova for insights that matter.
+                  Join over 250,000 smart investors who use NexusFinance for stock analysis, retirement planning, and wealth management strategies.
                 </p>
 
                 <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -900,7 +908,7 @@ const Index = () => {
                           transition={{ duration: 0.6 }}
                         />
                         <span className="relative z-10 flex items-center gap-3">
-                          Start Exploring
+                          Get Free Access
                           <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                         </span>
                       </motion.button>
@@ -914,7 +922,7 @@ const Index = () => {
                         whileTap={{ scale: 0.98 }}
                         className="px-10 py-5 text-lg font-medium text-foreground rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all"
                       >
-                        Get in Touch
+                        Talk to an Expert
                       </motion.button>
                     </Link>
                   </MagneticElement>
@@ -928,10 +936,10 @@ const Index = () => {
                   className="flex flex-wrap items-center justify-center gap-8 mt-16 pt-10 border-t border-border"
                 >
                   {[
-                    { icon: CheckCircle2, label: "100% Free Access" },
-                    { icon: Shield, label: "No Advertisements" },
-                    { icon: Lock, label: "Privacy Protected" },
-                    { icon: Zap, label: "Updated Daily" },
+                    { icon: CheckCircle2, label: "100% Free Resources" },
+                    { icon: Shield, label: "SEC Compliant" },
+                    { icon: Lock, label: "Bank-Level Security" },
+                    { icon: Zap, label: "Daily Market Updates" },
                   ].map((item, i) => (
                     <motion.div
                       key={item.label}
