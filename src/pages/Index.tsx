@@ -131,8 +131,8 @@ const AnimatedNumber = ({ value, suffix = "", decimal = false }: { value: number
   );
 };
 
-// Magnetic hover effect
-const MagneticElement = ({ children, className = "", strength = 0.3 }: { children: React.ReactNode; className?: string; strength?: number }) => {
+// Enhanced Magnetic hover effect with stronger pull
+const MagneticElement = ({ children, className = "", strength = 0.4 }: { children: React.ReactNode; className?: string; strength?: number }) => {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -157,7 +157,7 @@ const MagneticElement = ({ children, className = "", strength = 0.3 }: { childre
       style={{ x, y }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      transition={{ type: "spring", stiffness: 350, damping: 15 }}
+      transition={{ type: "spring", stiffness: 400, damping: 15 }}
       className={className}
     >
       {children}
@@ -165,7 +165,7 @@ const MagneticElement = ({ children, className = "", strength = 0.3 }: { childre
   );
 };
 
-// Scroll-triggered section
+// Scroll-triggered section with enhanced animation
 const RevealSection = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -187,10 +187,10 @@ const RevealSection = ({ children, className = "", delay = 0 }: { children: Reac
   );
 };
 
-// Floating decorative element
+// Updated Floating orbs with violet/cyan theme
 const FloatingOrb = ({ 
   size = 400, 
-  color = "emerald",
+  color = "violet",
   delay = 0,
   className = ""
 }: { 
@@ -200,9 +200,10 @@ const FloatingOrb = ({
   className?: string;
 }) => {
   const colors: Record<string, string> = {
-    emerald: "rgba(16, 185, 129, 0.15)",
-    gold: "rgba(234, 179, 8, 0.12)",
-    rose: "rgba(244, 63, 94, 0.1)",
+    violet: "rgba(139, 92, 246, 0.15)",
+    cyan: "rgba(0, 188, 212, 0.12)",
+    pink: "rgba(236, 72, 153, 0.1)",
+    blue: "rgba(59, 130, 246, 0.12)",
   };
   
   return (
@@ -211,7 +212,7 @@ const FloatingOrb = ({
       style={{
         width: size,
         height: size,
-        background: `radial-gradient(circle, ${colors[color] || colors.emerald} 0%, transparent 70%)`,
+        background: `radial-gradient(circle, ${colors[color] || colors.violet} 0%, transparent 70%)`,
         filter: "blur(60px)",
       }}
       animate={{
@@ -219,7 +220,7 @@ const FloatingOrb = ({
         opacity: [0.5, 0.8, 0.5],
       }}
       transition={{
-        duration: 8,
+        duration: 10,
         repeat: Infinity,
         ease: "easeInOut",
         delay,
@@ -238,7 +239,7 @@ const GrainOverlay = () => (
   />
 );
 
-// Elegant card with hover effects
+// Enhanced Elegant card with animated border and glow
 const ElegantCard = ({ 
   children, 
   className = "",
@@ -254,15 +255,31 @@ const ElegantCard = ({
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ y: -8 }}
+      whileHover={{ y: -12 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={`relative overflow-hidden bg-card border border-border rounded-2xl ${className}`}
       style={{
         boxShadow: isHovered && hoverGlow 
-          ? "0 25px 50px -12px hsl(158 64% 40% / 0.15)" 
-          : "0 4px 30px -8px hsl(160 30% 8% / 0.08)",
+          ? "0 25px 50px -12px hsl(262 83% 58% / 0.2), 0 0 0 1px hsl(262 83% 58% / 0.1)" 
+          : "0 4px 30px -8px hsl(222 47% 11% / 0.06)",
       }}
     >
+      {/* Animated gradient border on hover */}
+      <motion.div
+        className="absolute inset-0 rounded-2xl pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0 }}
+        style={{
+          background: "linear-gradient(90deg, hsl(262 83% 58% / 0.3), hsl(186 100% 42% / 0.3), hsl(262 83% 58% / 0.3))",
+          backgroundSize: "200% 100%",
+          animation: isHovered ? "border-flow 3s linear infinite" : "none",
+          mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          maskComposite: "exclude",
+          WebkitMaskComposite: "xor",
+          padding: "2px",
+        }}
+      />
+
       {/* Shimmer effect */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
@@ -272,7 +289,7 @@ const ElegantCard = ({
         <motion.div
           className="absolute inset-0 -translate-x-full"
           style={{
-            background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.05), transparent)",
+            background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.08), transparent)",
           }}
           animate={isHovered ? { translateX: ["100%", "-100%"] } : {}}
           transition={{ duration: 1.5, repeat: Infinity }}
@@ -308,11 +325,22 @@ const Index = () => {
         
         {/* ============= HERO SECTION ============= */}
         <section className="relative min-h-[100vh] flex items-center overflow-hidden bg-background">
-          {/* Background decorations */}
+          {/* Background decorations - Updated colors */}
           <div className="absolute inset-0">
-            <FloatingOrb size={600} color="emerald" className="-top-48 -right-48" delay={0} />
-            <FloatingOrb size={500} color="gold" className="-bottom-32 -left-32" delay={2} />
-            <FloatingOrb size={400} color="rose" className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={4} />
+            <FloatingOrb size={600} color="violet" className="-top-48 -right-48" delay={0} />
+            <FloatingOrb size={500} color="cyan" className="-bottom-32 -left-32" delay={2} />
+            <FloatingOrb size={400} color="pink" className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={4} />
+            
+            {/* Gradient mesh background */}
+            <div 
+              className="absolute inset-0 opacity-40"
+              style={{
+                background: `
+                  radial-gradient(ellipse 80% 50% at 20% 40%, hsl(262 83% 58% / 0.08) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 60%, hsl(186 100% 42% / 0.06) 0%, transparent 50%)
+                `,
+              }}
+            />
             
             {/* Subtle grid pattern */}
             <div 
@@ -332,7 +360,7 @@ const Index = () => {
             className="relative z-10 container-wide px-6 py-32"
           >
             <div className="max-w-5xl mx-auto">
-              {/* Editorial badge */}
+              {/* Editorial badge with glow */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -341,9 +369,14 @@ const Index = () => {
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-primary/5 border border-primary/20"
+                  className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/30 shadow-lg shadow-primary/5"
                 >
-                  <TrendingUp className="w-4 h-4 text-primary" />
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                  >
+                    <TrendingUp className="w-4 h-4 text-primary" />
+                  </motion.div>
                   <span className="text-sm font-medium text-primary tracking-wide">Trusted by 250,000+ Smart Investors</span>
                 </motion.div>
               </motion.div>
@@ -369,6 +402,13 @@ const Index = () => {
                     >
                       Financial Future
                     </motion.span>
+                    {/* Animated underline */}
+                    <motion.span
+                      className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    />
                   </span>
                 </h1>
                 
@@ -382,7 +422,7 @@ const Index = () => {
                 </motion.p>
               </motion.div>
 
-              {/* CTA Buttons */}
+              {/* CTA Buttons with enhanced hover */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -392,19 +432,33 @@ const Index = () => {
                 <MagneticElement>
                   <Link to="/insights">
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group relative overflow-hidden bg-primary text-primary-foreground px-8 py-4 text-lg font-semibold rounded-xl shadow-lg shadow-primary/20"
+                      className="group relative overflow-hidden bg-primary text-primary-foreground px-8 py-4 text-lg font-semibold rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-shadow"
                     >
+                      {/* Shimmer sweep effect */}
                       <motion.span 
-                        className="absolute inset-0 bg-gradient-to-r from-primary via-emerald-400 to-primary"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
+                        whileHover={{ translateX: "200%" }}
                         transition={{ duration: 0.6 }}
+                      />
+                      {/* Glow ring on hover */}
+                      <motion.span
+                        className="absolute inset-0 rounded-xl"
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        style={{
+                          boxShadow: "inset 0 0 20px hsl(0 0% 100% / 0.2)",
+                        }}
                       />
                       <span className="relative z-10 flex items-center gap-3">
                         Explore Investment Guides
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <motion.span
+                          className="inline-block"
+                          whileHover={{ x: 4 }}
+                        >
+                          <ArrowRight className="w-5 h-5" />
+                        </motion.span>
                       </span>
                     </motion.button>
                   </Link>
@@ -413,20 +467,32 @@ const Index = () => {
                 <MagneticElement>
                   <Link to="/about">
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group px-8 py-4 text-lg font-medium text-foreground rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all"
+                      className="group px-8 py-4 text-lg font-medium text-foreground rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all relative overflow-hidden"
                     >
-                      <span className="flex items-center gap-3">
+                      {/* Animated border gradient on hover */}
+                      <motion.span
+                        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"
+                        style={{
+                          background: "linear-gradient(90deg, hsl(262 83% 58% / 0.1), hsl(186 100% 42% / 0.1), hsl(262 83% 58% / 0.1))",
+                        }}
+                      />
+                      <span className="relative z-10 flex items-center gap-3">
                         Free Financial Tools
-                        <Wallet className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                        <motion.span
+                          whileHover={{ rotate: 15, scale: 1.1 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <Wallet className="w-5 h-5" />
+                        </motion.span>
                       </span>
                     </motion.button>
                   </Link>
                 </MagneticElement>
               </motion.div>
 
-              {/* Stats */}
+              {/* Stats with enhanced styling */}
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -439,7 +505,8 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.4 + i * 0.1 }}
-                    className="text-center"
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    className="text-center p-4 rounded-xl hover:bg-muted/30 transition-colors"
                   >
                     <div className="text-3xl md:text-4xl font-display font-bold text-foreground mb-1">
                       <AnimatedNumber value={stat.value} suffix={stat.suffix} decimal={stat.decimal} />
@@ -450,7 +517,7 @@ const Index = () => {
               </motion.div>
             </div>
 
-            {/* Scroll indicator */}
+            {/* Scroll indicator with bounce */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -460,7 +527,7 @@ const Index = () => {
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="flex flex-col items-center gap-2 text-muted-foreground/60 cursor-pointer hover:text-muted-foreground transition-colors"
+                className="flex flex-col items-center gap-2 text-muted-foreground/60 cursor-pointer hover:text-primary transition-colors"
               >
                 <span className="text-xs uppercase tracking-[0.25em] font-medium">Discover</span>
                 <ChevronDown className="w-5 h-5" />
@@ -471,12 +538,12 @@ const Index = () => {
 
         {/* ============= YOUR JOURNEY SECTION - Cinematic Timeline ============= */}
         <section className="relative py-32 bg-background overflow-hidden">
-          {/* Dramatic lighting effect */}
+          {/* Dramatic lighting effect - violet theme */}
           <div className="absolute inset-0">
             <motion.div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px]"
               style={{
-                background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.08) 0%, transparent 70%)",
+                background: "radial-gradient(ellipse at center, hsl(262 83% 58% / 0.08) 0%, transparent 70%)",
               }}
               animate={{
                 scale: [1, 1.1, 1],
@@ -514,9 +581,9 @@ const Index = () => {
 
             {/* Horizontal Timeline */}
             <div className="relative">
-              {/* Connecting line */}
+              {/* Connecting line - gradient */}
               <motion.div
-                className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+                className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -537,12 +604,12 @@ const Index = () => {
                       )}
 
                       <div className="relative p-8 lg:p-10 text-center">
-                        {/* Glowing number */}
+                        {/* Glowing number with violet theme */}
                         <motion.div
                           className="relative inline-block mb-8"
                           whileHover={{ scale: 1.1 }}
                         >
-                          {/* Glow ring */}
+                          {/* Animated glow ring */}
                           <motion.div
                             className="absolute inset-0 rounded-full bg-primary/20 blur-xl"
                             animate={{
@@ -553,7 +620,7 @@ const Index = () => {
                           />
                           
                           {/* Number container */}
-                          <div className="relative w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-gradient-to-br from-background via-card to-background border-2 border-primary/30 flex items-center justify-center group-hover:border-primary/60 transition-colors duration-500">
+                          <div className="relative w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-gradient-to-br from-background via-card to-background border-2 border-primary/30 flex items-center justify-center group-hover:border-primary/60 transition-colors duration-500 group-hover:shadow-lg group-hover:shadow-primary/20">
                             <span className="text-3xl lg:text-4xl font-display font-bold text-gradient">
                               {step.number}
                             </span>
@@ -561,7 +628,7 @@ const Index = () => {
 
                           {/* Orbiting dot */}
                           <motion.div
-                            className="absolute w-2 h-2 rounded-full bg-primary shadow-lg shadow-primary/50"
+                            className="absolute w-2 h-2 rounded-full bg-accent shadow-lg shadow-accent/50"
                             style={{
                               top: "50%",
                               left: "50%",
@@ -590,7 +657,7 @@ const Index = () => {
                         <h3 className="relative inline-block text-2xl lg:text-3xl font-display font-bold text-foreground mb-4">
                           {step.title}
                           <motion.span
-                            className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-full"
+                            className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full"
                             initial={{ width: 0 }}
                             whileInView={{ width: "100%" }}
                             viewport={{ once: true }}
@@ -605,7 +672,7 @@ const Index = () => {
 
                         {/* Hover effect card background */}
                         <motion.div
-                          className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+                          className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
                         />
                       </div>
                     </motion.div>
@@ -627,7 +694,7 @@ const Index = () => {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group inline-flex items-center gap-3 px-8 py-4 rounded-full border border-primary/30 hover:border-primary/60 bg-primary/5 hover:bg-primary/10 text-foreground font-semibold transition-all duration-300"
+                      className="group inline-flex items-center gap-3 px-8 py-4 rounded-full border border-primary/30 hover:border-primary/60 bg-primary/5 hover:bg-primary/10 text-foreground font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
                     >
                       <span>See How It Works</span>
                       <motion.div
@@ -646,7 +713,7 @@ const Index = () => {
 
         {/* ============= FEATURED CONTENT SECTION ============= */}
         <section className="relative py-32 bg-background overflow-hidden">
-          <FloatingOrb size={500} color="gold" className="top-1/4 -left-48" delay={0} />
+          <FloatingOrb size={500} color="cyan" className="top-1/4 -left-48" delay={0} />
           <GrainOverlay />
 
           <div className="container-wide px-6 relative z-10">
@@ -659,12 +726,17 @@ const Index = () => {
                     transition={{ type: "spring", stiffness: 200, damping: 15 }}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 mb-6"
                   >
-                    <LineChart className="w-4 h-4 text-accent" />
+                    <motion.div
+                      animate={{ rotate: [0, -10, 10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      <LineChart className="w-4 h-4 text-accent" />
+                    </motion.div>
                     <span className="text-sm font-semibold text-foreground uppercase tracking-wider">Top Rated Guides</span>
                   </motion.div>
                   <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
                     Financial
-                    <span className="text-gradient ml-2">Resources</span>
+                    <span className="text-gradient ml-3">Resources</span>
                   </h2>
                 </div>
                 <MagneticElement>
@@ -672,7 +744,7 @@ const Index = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="group flex items-center gap-2 px-6 py-3 rounded-full bg-card border border-border text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all"
+                      className="group flex items-center gap-2 px-6 py-3 rounded-full bg-card border border-border text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all hover:shadow-md"
                     >
                       View All Resources
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -682,7 +754,7 @@ const Index = () => {
               </div>
             </RevealSection>
 
-            {/* Categories */}
+            {/* Categories with enhanced hover */}
             <RevealSection delay={0.1}>
               <div className="flex flex-wrap gap-3 mb-12">
                 {categories.map((cat, i) => (
@@ -691,10 +763,15 @@ const Index = () => {
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 + i * 0.1 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all"
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all hover:shadow-md hover:shadow-primary/5"
                   >
-                    <cat.icon className="w-4 h-4 text-primary" />
+                    <motion.span
+                      whileHover={{ rotate: 15, scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <cat.icon className="w-4 h-4 text-primary" />
+                    </motion.span>
                     <span className="text-sm font-medium text-foreground">{cat.name}</span>
                     <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{cat.count}</span>
                   </motion.button>
@@ -722,7 +799,7 @@ const Index = () => {
 
         {/* ============= TESTIMONIALS SECTION ============= */}
         <section className="relative py-32 bg-muted/30 overflow-hidden">
-          <FloatingOrb size={450} color="rose" className="-top-32 right-1/4" delay={2} />
+          <FloatingOrb size={450} color="pink" className="-top-32 right-1/4" delay={2} />
           <GrainOverlay />
 
           <div className="container-wide px-6 relative z-10">
@@ -732,14 +809,19 @@ const Index = () => {
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/20 mb-6"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 mb-6"
                 >
-                  <Star className="w-4 h-4 text-rose-500" />
-                  <span className="text-sm font-semibold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Success Stories</span>
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <Star className="w-4 h-4 text-pink-500" />
+                  </motion.div>
+                  <span className="text-sm font-semibold text-pink-600 dark:text-pink-400 uppercase tracking-wider">Success Stories</span>
                 </motion.div>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                   Real Investors,
-                  <span className="text-gradient ml-2">Real Results</span>
+                  <span className="text-gradient ml-3">Real Results</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Discover how thousands of investors have transformed their financial futures with our expert guidance on stocks, ETFs, and retirement planning.
@@ -752,14 +834,19 @@ const Index = () => {
               {testimonials.map((testimonial, index) => (
                 <RevealSection key={testimonial.author} delay={index * 0.15}>
                   <ElegantCard className="h-full p-8">
-                    <Quote className="w-10 h-10 text-primary/20 mb-6" />
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Quote className="w-10 h-10 text-primary/30 mb-6" />
+                    </motion.div>
                     <p className="text-foreground/90 text-lg leading-relaxed mb-8 italic">
                       "{testimonial.quote}"
                     </p>
                     <div className="flex items-center gap-4 pt-6 border-t border-border">
                       <motion.div 
                         whileHover={{ scale: 1.1 }}
-                        className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-emerald-400 flex items-center justify-center text-white font-semibold"
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold shadow-lg shadow-primary/20"
                       >
                         {testimonial.author.charAt(0)}
                       </motion.div>
@@ -777,7 +864,7 @@ const Index = () => {
 
         {/* ============= WHY CHOOSE US SECTION ============= */}
         <section className="relative py-32 bg-background overflow-hidden">
-          <FloatingOrb size={500} color="emerald" className="bottom-0 right-0" delay={1} />
+          <FloatingOrb size={500} color="violet" className="bottom-0 right-0" delay={1} />
           <GrainOverlay />
 
           <div className="container-wide px-6 relative z-10">
@@ -789,12 +876,17 @@ const Index = () => {
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
                 >
-                  <Award className="w-4 h-4 text-primary" />
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  >
+                    <Award className="w-4 h-4 text-primary" />
+                  </motion.div>
                   <span className="text-sm font-semibold text-primary uppercase tracking-wider">Why NexusFinance</span>
                 </motion.div>
                 <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
                   Your Trusted
-                  <span className="text-gradient ml-2">Financial Partner</span>
+                  <span className="text-gradient ml-3">Financial Partner</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-10">
                   We provide unbiased, data-driven financial advice covering investment portfolios, passive income strategies, credit optimization, and tax-efficient wealth building.
@@ -812,11 +904,14 @@ const Index = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + i * 0.15 }}
                       whileHover={{ x: 8 }}
-                      className="flex items-start gap-4 p-4 rounded-xl hover:bg-muted/50 transition-colors cursor-default"
+                      className="group flex items-start gap-4 p-4 rounded-xl hover:bg-muted/50 transition-all cursor-default"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <motion.div 
+                        className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                      >
                         <item.icon className="w-6 h-6 text-primary" />
-                      </div>
+                      </motion.div>
                       <div>
                         <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
                         <p className="text-muted-foreground">{item.desc}</p>
@@ -829,10 +924,10 @@ const Index = () => {
               <RevealSection delay={0.2}>
                 <div className="grid grid-cols-2 gap-5">
                   {[
-                    { label: "ROI Improvement", value: "127%", color: "from-emerald-500 to-teal-600" },
-                    { label: "Guides Published", value: "850+", color: "from-amber-500 to-yellow-600" },
+                    { label: "ROI Improvement", value: "127%", color: "from-primary to-violet-400" },
+                    { label: "Guides Published", value: "850+", color: "from-accent to-cyan-400" },
                     { label: "Countries Served", value: "94", color: "from-violet-500 to-purple-600" },
-                    { label: "Industry Awards", value: "18", color: "from-rose-500 to-pink-600" },
+                    { label: "Industry Awards", value: "18", color: "from-pink-500 to-rose-400" },
                   ].map((stat, i) => (
                     <motion.div
                       key={stat.label}
@@ -840,7 +935,7 @@ const Index = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 + i * 0.1 }}
                       whileHover={{ scale: 1.05, y: -5 }}
-                      className={`relative p-6 rounded-2xl bg-gradient-to-br ${stat.color} text-white overflow-hidden`}
+                      className={`relative p-6 rounded-2xl bg-gradient-to-br ${stat.color} text-white overflow-hidden shadow-lg`}
                     >
                       <motion.div
                         className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"
@@ -861,9 +956,9 @@ const Index = () => {
 
         {/* ============= FINAL CTA SECTION ============= */}
         <section className="relative py-32 overflow-hidden">
-          {/* Gradient background */}
+          {/* Gradient background - violet theme */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
-          <FloatingOrb size={600} color="emerald" className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={0} />
+          <FloatingOrb size={600} color="violet" className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={0} />
           <GrainOverlay />
 
           <div className="container-wide px-6 relative z-10">
@@ -873,7 +968,7 @@ const Index = () => {
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.8 }}
-                  className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-emerald-400 mb-10 shadow-xl shadow-primary/20"
+                  className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent mb-10 shadow-xl shadow-primary/30"
                 >
                   <motion.div
                     animate={{ rotate: 360 }}
@@ -899,12 +994,11 @@ const Index = () => {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="group relative overflow-hidden bg-primary text-primary-foreground px-10 py-5 text-lg font-semibold rounded-xl shadow-xl shadow-primary/25"
+                        className="group relative overflow-hidden bg-primary text-primary-foreground px-10 py-5 text-lg font-semibold rounded-xl shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-shadow"
                       >
                         <motion.span 
-                          className="absolute inset-0 bg-gradient-to-r from-primary via-emerald-400 to-primary"
-                          initial={{ x: "-100%" }}
-                          whileHover={{ x: "100%" }}
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
+                          whileHover={{ translateX: "200%" }}
                           transition={{ duration: 0.6 }}
                         />
                         <span className="relative z-10 flex items-center gap-3">
@@ -920,7 +1014,7 @@ const Index = () => {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="px-10 py-5 text-lg font-medium text-foreground rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all"
+                        className="px-10 py-5 text-lg font-medium text-foreground rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all hover:shadow-lg"
                       >
                         Talk to an Expert
                       </motion.button>
@@ -928,7 +1022,7 @@ const Index = () => {
                   </MagneticElement>
                 </motion.div>
 
-                {/* Trust badges */}
+                {/* Trust badges with enhanced hover */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -946,10 +1040,15 @@ const Index = () => {
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.7 + i * 0.1 }}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors cursor-default"
+                      whileHover={{ scale: 1.08, y: -3 }}
+                      className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors cursor-default"
                     >
-                      <item.icon className="w-4 h-4 text-primary" />
+                      <motion.span
+                        whileHover={{ rotate: 10, scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <item.icon className="w-4 h-4 text-primary" />
+                      </motion.span>
                       <span className="text-sm font-medium">{item.label}</span>
                     </motion.div>
                   ))}
