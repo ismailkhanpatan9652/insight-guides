@@ -43,30 +43,42 @@ const expertise = [
   { value: 12, suffix: "+", label: "Years Experience" },
 ];
 
-const services = [
+const pillars = [
   {
-    icon: Compass,
-    title: "Strategic Insights",
-    description: "Navigate complex decisions with data-driven guidance from industry veterans.",
-    color: "from-emerald-500 to-teal-600",
+    icon: Globe,
+    title: "Global Perspective",
+    subtitle: "Worldwide Intelligence",
+    description: "Access insights curated from leading experts across 50+ countries, bringing you a truly global viewpoint.",
+    stats: "50+ Countries",
+    gradient: "from-cyan-400 via-blue-500 to-indigo-600",
+    glowColor: "rgba(56, 189, 248, 0.4)",
   },
   {
-    icon: Feather,
-    title: "Curated Content",
-    description: "Every piece is meticulously crafted to deliver maximum value and clarity.",
-    color: "from-amber-500 to-yellow-600",
+    icon: Brain,
+    title: "AI-Powered Analysis",
+    subtitle: "Smart Recommendations",
+    description: "Our proprietary algorithms analyze thousands of data points to surface the most relevant insights for you.",
+    stats: "10M+ Data Points",
+    gradient: "from-violet-400 via-purple-500 to-fuchsia-600",
+    glowColor: "rgba(168, 85, 247, 0.4)",
   },
   {
-    icon: Shield,
-    title: "Trusted Research",
-    description: "Independent analysis free from external influence or hidden agendas.",
-    color: "from-rose-500 to-pink-600",
+    icon: Lock,
+    title: "Verified Sources",
+    subtitle: "Trust & Authenticity",
+    description: "Every piece of content undergoes rigorous fact-checking by our editorial team before publication.",
+    stats: "100% Verified",
+    gradient: "from-emerald-400 via-green-500 to-teal-600",
+    glowColor: "rgba(16, 185, 129, 0.4)",
   },
   {
-    icon: Lightbulb,
-    title: "Actionable Wisdom",
-    description: "Transform knowledge into tangible results with practical recommendations.",
-    color: "from-violet-500 to-purple-600",
+    icon: Timer,
+    title: "Real-Time Updates",
+    subtitle: "Always Current",
+    description: "Stay ahead with instant updates on market trends, industry news, and emerging opportunities.",
+    stats: "24/7 Monitoring",
+    gradient: "from-orange-400 via-amber-500 to-yellow-500",
+    glowColor: "rgba(251, 146, 60, 0.4)",
   },
 ];
 
@@ -470,61 +482,226 @@ const Index = () => {
           </motion.div>
         </section>
 
-        {/* ============= SERVICES SECTION ============= */}
-        <section className="relative py-32 bg-muted/30 overflow-hidden">
-          <FloatingOrb size={400} color="emerald" className="-top-32 right-0" delay={1} />
+        {/* ============= PILLARS SECTION - Premium Bento Grid ============= */}
+        <section className="relative py-32 bg-gradient-to-b from-background via-muted/20 to-background overflow-hidden">
+          {/* Animated mesh gradient background */}
+          <div className="absolute inset-0">
+            <motion.div
+              className="absolute top-0 left-0 w-[800px] h-[800px] opacity-30"
+              style={{
+                background: "radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 60%)",
+                filter: "blur(80px)",
+              }}
+              animate={{
+                x: [0, 100, 0],
+                y: [0, 50, 0],
+              }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute bottom-0 right-0 w-[700px] h-[700px] opacity-25"
+              style={{
+                background: "radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 60%)",
+                filter: "blur(80px)",
+              }}
+              animate={{
+                x: [0, -80, 0],
+                y: [0, -60, 0],
+              }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+          
           <GrainOverlay />
 
           <div className="container-wide px-6 relative z-10">
             <RevealSection>
-              <div className="text-center max-w-3xl mx-auto mb-20">
+              <div className="text-center max-w-4xl mx-auto mb-20">
                 <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+                  viewport={{ once: true }}
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 mb-8"
                 >
-                  <Sparkles className="w-4 h-4 text-primary" />
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">What We Offer</span>
+                  <Layers className="w-8 h-8 text-primary" />
                 </motion.div>
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                  Expertise That
-                  <span className="text-gradient ml-2">Empowers</span>
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Our commitment to excellence drives everything we create—delivering insights that make a real difference.
-                </p>
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6"
+                >
+                  The Four
+                  <span className="block mt-2">
+                    <span className="relative">
+                      <span className="text-gradient">Pillars</span>
+                      <motion.span
+                        className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-primary via-violet-500 to-primary rounded-full"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        transition={{ delay: 0.5, duration: 0.8 }}
+                        viewport={{ once: true }}
+                      />
+                    </span>
+                  </span>
+                </motion.h2>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto"
+                >
+                  Our foundation is built on four essential principles that guide every insight we deliver.
+                </motion.p>
               </div>
             </RevealSection>
 
-            {/* Service cards */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {services.map((service, index) => (
-                <RevealSection key={service.title} delay={index * 0.1}>
-                  <ElegantCard className="h-full p-8 group">
+            {/* Premium Bento Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {pillars.map((pillar, index) => (
+                <RevealSection key={pillar.title} delay={index * 0.15}>
+                  <motion.div
+                    className="group relative"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  >
+                    {/* Glow effect on hover */}
                     <motion.div
-                      whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                      transition={{ duration: 0.5 }}
-                      className={`w-14 h-14 mb-6 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg`}
-                    >
-                      <service.icon className="w-7 h-7 text-white" />
-                    </motion.div>
-                    <h3 className="text-xl font-display font-semibold text-foreground mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                      className="absolute -inset-0.5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
+                      style={{ background: pillar.glowColor }}
+                    />
                     
-                    {/* Arrow on hover */}
+                    {/* Animated border */}
                     <motion.div
-                      initial={{ opacity: 0, x: -10 }}
-                      whileHover={{ opacity: 1, x: 0 }}
-                      className="mt-6 flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <span className="text-sm font-medium">Learn more</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.div>
-                  </ElegantCard>
+                      className="absolute -inset-[1px] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{
+                        background: `linear-gradient(135deg, ${pillar.glowColor}, transparent, ${pillar.glowColor})`,
+                        backgroundSize: "300% 300%",
+                      }}
+                      animate={{
+                        backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
+                      }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                    />
+                    
+                    {/* Card content */}
+                    <div className="relative h-full p-8 md:p-10 rounded-3xl bg-card/80 backdrop-blur-xl border border-border/50 overflow-hidden">
+                      {/* Decorative corner gradient */}
+                      <div 
+                        className="absolute top-0 right-0 w-64 h-64 opacity-10 group-hover:opacity-20 transition-opacity duration-500"
+                        style={{
+                          background: `radial-gradient(circle at top right, ${pillar.glowColor} 0%, transparent 60%)`,
+                        }}
+                      />
+                      
+                      {/* Floating particles on hover */}
+                      <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                        {[...Array(5)].map((_, i) => (
+                          <motion.div
+                            key={i}
+                            className="absolute w-1 h-1 rounded-full"
+                            style={{ 
+                              background: pillar.glowColor,
+                              left: `${20 + Math.random() * 60}%`,
+                            }}
+                            initial={{ y: "100%", opacity: 0 }}
+                            animate={{ 
+                              y: "-50%", 
+                              opacity: [0, 1, 0],
+                            }}
+                            transition={{ 
+                              duration: 2 + Math.random(), 
+                              repeat: Infinity,
+                              delay: i * 0.4,
+                              ease: "easeOut"
+                            }}
+                          />
+                        ))}
+                      </div>
+
+                      <div className="relative z-10 flex flex-col h-full">
+                        {/* Icon with gradient background */}
+                        <motion.div
+                          className={`w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br ${pillar.gradient} flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-shadow duration-500`}
+                          whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                          transition={{ duration: 0.5 }}
+                          style={{
+                            boxShadow: `0 10px 40px -10px ${pillar.glowColor}`,
+                          }}
+                        >
+                          <pillar.icon className="w-8 h-8 text-white" />
+                        </motion.div>
+                        
+                        {/* Subtitle */}
+                        <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
+                          {pillar.subtitle}
+                        </span>
+                        
+                        {/* Title */}
+                        <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 group-hover:text-gradient transition-all duration-300">
+                          {pillar.title}
+                        </h3>
+                        
+                        {/* Description */}
+                        <p className="text-muted-foreground leading-relaxed mb-6 flex-grow">
+                          {pillar.description}
+                        </p>
+                        
+                        {/* Stats badge */}
+                        <div className="flex items-center justify-between">
+                          <motion.div
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 border border-border/50"
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            <BadgeCheck className="w-4 h-4 text-primary" />
+                            <span className="text-sm font-semibold text-foreground">{pillar.stats}</span>
+                          </motion.div>
+                          
+                          {/* Arrow indicator */}
+                          <motion.div
+                            className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity"
+                            initial={{ x: -10 }}
+                            whileHover={{ x: 0 }}
+                          >
+                            <span className="text-sm font-medium">Explore</span>
+                            <ArrowUpRight className="w-4 h-4" />
+                          </motion.div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
                 </RevealSection>
               ))}
             </div>
+
+            {/* Trust indicators */}
+            <RevealSection delay={0.6}>
+              <motion.div
+                className="mt-16 flex flex-wrap items-center justify-center gap-8 text-muted-foreground"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                viewport={{ once: true }}
+              >
+                {[
+                  { icon: CheckCircle2, text: "Fact-Checked Content" },
+                  { icon: Award, text: "Award-Winning Team" },
+                  { icon: Users, text: "Expert Contributors" },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.text}
+                    className="flex items-center gap-2"
+                    whileHover={{ scale: 1.05, color: "hsl(var(--foreground))" }}
+                  >
+                    <item.icon className="w-5 h-5 text-primary" />
+                    <span className="text-sm font-medium">{item.text}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </RevealSection>
           </div>
         </section>
 
