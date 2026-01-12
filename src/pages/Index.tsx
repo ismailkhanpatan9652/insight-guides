@@ -45,8 +45,8 @@ import investmentInsightsImage from "@/assets/images/investment-insights.jpg";
 // ============= SEO-OPTIMIZED DATA =============
 
 const expertise = [
-  { value: 250, suffix: "K+", label: "Smart Investors" },
-  { value: 850, suffix: "+", label: "Financial Guides" },
+  { value: 250, suffix: "K+", label: "Happy Readers" },
+  { value: 850, suffix: "+", label: "Helpful Guides" },
   { value: 4.9, suffix: "/5", label: "Trust Score", decimal: true },
   { value: 15, suffix: "+", label: "Years Expertise" },
 ];
@@ -55,46 +55,46 @@ const journeySteps = [
   {
     number: "01",
     title: "Research",
-    description: "Access comprehensive financial planning resources, investment strategies, and wealth management guides.",
+    description: "Access comprehensive guides on savings accounts, budgeting tips, and smart money management strategies.",
   },
   {
     number: "02", 
     title: "Compare",
-    description: "Evaluate top-rated financial products, credit cards, loans, and investment platforms side-by-side.",
+    description: "Evaluate top-rated financial products, credit cards, loans, and banking services side-by-side.",
   },
   {
     number: "03",
     title: "Prosper",
-    description: "Make data-driven financial decisions that maximize returns and secure your financial future.",
+    description: "Make informed financial decisions that help you save more and manage your money effectively.",
   },
 ];
 
 const testimonials = [
   {
-    quote: "NexusFinance helped me build a six-figure investment portfolio. Their stock market analysis and retirement planning guides are unmatched.",
+    quote: "NexusFinance helped me understand budgeting and savings. Their guides on managing money and planning for the future are unmatched.",
     author: "David Richardson",
-    role: "Portfolio Manager",
-    company: "Pinnacle Wealth",
+    role: "Small Business Owner",
+    company: "Richardson Consulting",
   },
   {
     quote: "The best personal finance resource I've found. Their credit score improvement tips saved me thousands on my mortgage rate.",
     author: "Jennifer Walsh",
-    role: "Real Estate Investor",
-    company: "Walsh Properties",
+    role: "Home Buyer",
+    company: "First-Time Owner",
   },
   {
-    quote: "From budgeting basics to advanced tax strategies, NexusFinance covers everything a savvy investor needs to know.",
+    quote: "From budgeting basics to advanced savings strategies, NexusFinance covers everything you need to manage your finances.",
     author: "Michael Torres",
-    role: "Financial Advisor",
-    company: "Torres Financial Group",
+    role: "Financial Planner",
+    company: "Torres Advisory",
   },
 ];
 
 const categories = [
-  { name: "Investing", icon: LineChart, count: 156 },
-  { name: "Banking", icon: PiggyBank, count: 89 },
+  { name: "Savings", icon: PiggyBank, count: 156 },
+  { name: "Banking", icon: Wallet, count: 89 },
   { name: "Credit Cards", icon: Wallet, count: 124 },
-  { name: "Wealth Building", icon: TrendingUp, count: 203 },
+  { name: "Budgeting", icon: LineChart, count: 203 },
 ];
 
 // ============= UTILITY COMPONENTS =============
@@ -377,7 +377,7 @@ const Index = () => {
                   >
                     <TrendingUp className="w-4 h-4 text-primary" />
                   </motion.div>
-                  <span className="text-sm font-medium text-primary tracking-wide">Trusted by 250,000+ Smart Investors</span>
+                  <span className="text-sm font-medium text-primary tracking-wide">Trusted by 250,000+ Smart Readers</span>
                 </motion.div>
               </motion.div>
 
@@ -418,7 +418,7 @@ const Index = () => {
                   transition={{ delay: 0.8 }}
                   className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
                 >
-                  Expert investment strategies, personal finance tips, and wealth-building guides to help you achieve financial independence.
+                  Smart budgeting tips, personal finance guides, and savings strategies to help you manage your money effectively.
                 </motion.p>
               </motion.div>
 
@@ -452,7 +452,7 @@ const Index = () => {
                         }}
                       />
                       <span className="relative z-10 flex items-center gap-3">
-                        Explore Investment Guides
+                        Explore Money Guides
                         <motion.span
                           className="inline-block"
                           whileHover={{ x: 4 }}
@@ -820,11 +820,11 @@ const Index = () => {
                   <span className="text-sm font-semibold text-pink-600 dark:text-pink-400 uppercase tracking-wider">Success Stories</span>
                 </motion.div>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                  Real Investors,
+                  Real Readers,
                   <span className="text-gradient ml-3">Real Results</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Discover how thousands of investors have transformed their financial futures with our expert guidance on stocks, ETFs, and retirement planning.
+                  Discover how thousands of readers have improved their finances with our expert guidance on budgeting, saving, and smart money management.
                 </p>
               </div>
             </RevealSection>
@@ -889,13 +889,13 @@ const Index = () => {
                   <span className="text-gradient ml-3">Financial Partner</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-                  We provide unbiased, data-driven financial advice covering investment portfolios, passive income strategies, credit optimization, and tax-efficient wealth building.
+                  We provide unbiased, data-driven financial advice covering budgeting strategies, savings tips, credit optimization, and smart money management.
                 </p>
 
                 <div className="space-y-6">
                   {[
-                    { icon: BadgeCheck, title: "CFA-Certified Analysis", desc: "Expert reviews by certified financial analysts and advisors" },
-                    { icon: Timer, title: "Real-Time Market Data", desc: "Live updates on stocks, bonds, crypto, and global markets" },
+                    { icon: BadgeCheck, title: "Expert-Verified Content", desc: "Thoroughly researched guides by experienced financial writers" },
+                    { icon: Timer, title: "Up-to-Date Information", desc: "Fresh content updated regularly with the latest financial tips" },
                     { icon: Lock, title: "Zero Sponsored Content", desc: "100% independent reviews with no paid promotions" },
                   ].map((item, i) => (
                     <motion.div
@@ -924,7 +924,7 @@ const Index = () => {
               <RevealSection delay={0.2}>
                 <div className="grid grid-cols-2 gap-5">
                   {[
-                    { label: "ROI Improvement", value: "127%", color: "from-primary to-violet-400" },
+                    { label: "Savings Tips", value: "500+", color: "from-primary to-violet-400" },
                     { label: "Guides Published", value: "850+", color: "from-accent to-cyan-400" },
                     { label: "Countries Served", value: "94", color: "from-violet-500 to-purple-600" },
                     { label: "Industry Awards", value: "18", color: "from-pink-500 to-rose-400" },
@@ -979,13 +979,13 @@ const Index = () => {
                 </motion.div>
 
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
-                  Start Building Your
+                  Start Your Journey to
                   <br />
-                  <span className="text-gradient">Investment Portfolio</span>
+                  <span className="text-gradient">Financial Freedom</span>
                 </h2>
 
                 <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-                  Join over 250,000 smart investors who use NexusFinance for stock analysis, retirement planning, and wealth management strategies.
+                  Join over 250,000 smart readers who use NexusFinance for budgeting tips, savings strategies, and practical money management guides.
                 </p>
 
                 <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-5">
