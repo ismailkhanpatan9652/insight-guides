@@ -389,7 +389,7 @@ const Index = () => {
                 className="text-center mb-10"
               >
                 <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.1] tracking-tight mb-8">
-                  Master Your
+                  Trendy Articles For
                   <br />
                   <span className="relative inline-block">
                     <motion.span 
@@ -400,7 +400,7 @@ const Index = () => {
                       transition={{ duration: 6, repeat: Infinity }}
                       style={{ backgroundSize: "200% auto" }}
                     >
-                      Financial Future
+                      Daily Life
                     </motion.span>
                     {/* Animated underline */}
                     <motion.span
@@ -418,7 +418,7 @@ const Index = () => {
                   transition={{ delay: 0.8 }}
                   className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
                 >
-                  Smart budgeting tips, personal finance guides, and savings strategies to help you manage your money effectively.
+                  Great trendy articles that will help you in daily life - from budgeting tips to smart shopping guides.
                 </motion.p>
               </motion.div>
 
