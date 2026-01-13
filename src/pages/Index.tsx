@@ -260,8 +260,8 @@ const Index = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6"
               >
-                Understand Digital Services
-                <span className="block text-gradient mt-2">Before You Subscribe</span>
+                Trendy Articles For
+                <span className="block text-gradient mt-2">Daily Life</span>
               </motion.h1>
               
               {/* Subtitle */}
@@ -271,8 +271,8 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10"
               >
-                Sulma publishes independent guides and insights to help you navigate streaming platforms, 
-                productivity tools, and digital subscriptions with confidence.
+                Great trendy articles that will help you in daily life - from 
+                budgeting tips to smart shopping guides.
               </motion.p>
 
               {/* CTA Buttons */}
