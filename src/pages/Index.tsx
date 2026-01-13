@@ -24,67 +24,67 @@ import {
 } from "lucide-react";
 
 // Import images for category cards
-import streamingServices from "@/assets/images/streaming-services.jpg";
-import productivityApps from "@/assets/images/productivity-apps.jpg";
-import personalFinance from "@/assets/images/personal-finance.jpg";
-import security from "@/assets/images/security.jpg";
+import lifestyleHero from "@/assets/images/lifestyle-hero.jpg";
+import smartHome from "@/assets/images/smart-home.jpg";
+import wellnessLifestyle from "@/assets/images/wellness-lifestyle.jpg";
+import smartShopping from "@/assets/images/smart-shopping.jpg";
 
 // ============= CONTENT DATA =============
 
 const stats = [
-  { value: 150, suffix: "K+", label: "Monthly Readers" },
-  { value: 500, suffix: "+", label: "In-Depth Guides" },
-  { value: 4.8, suffix: "/5", label: "Reader Rating", decimal: true },
-  { value: 12, suffix: "+", label: "Topics Covered" },
+  { value: 200, suffix: "K+", label: "Monthly Readers" },
+  { value: 600, suffix: "+", label: "Helpful Articles" },
+  { value: 4.9, suffix: "/5", label: "Reader Rating", decimal: true },
+  { value: 8, suffix: "+", label: "Categories" },
 ];
 
 const howItWorks = [
   {
     number: "01",
-    title: "Explore",
-    description: "Browse our curated library of guides covering digital services, subscriptions, and everyday tools.",
+    title: "Discover",
+    description: "Find practical guides on everyday topics from shopping tips to home organization and lifestyle hacks.",
     icon: Search,
   },
   {
     number: "02", 
     title: "Learn",
-    description: "Read unbiased, well-researched content written to help you understand your options clearly.",
+    description: "Get clear, easy-to-follow advice written by experts who understand real-life challenges.",
     icon: BookOpen,
   },
   {
     number: "03",
-    title: "Decide",
-    description: "Make confident, informed choices with the knowledge you've gained from our expert insights.",
+    title: "Apply",
+    description: "Put our tips into action and see real improvements in your daily routines and decisions.",
     icon: Lightbulb,
   },
 ];
 
 const testimonials = [
   {
-    quote: "Sulma helped me understand the differences between streaming services. Their comparison guides saved me hours of research.",
-    author: "Sarah Mitchell",
-    role: "Content Creator",
-    company: "Freelancer",
+    quote: "Sulma's shopping guides helped me save hundreds on my monthly expenses. The tips are practical and actually work!",
+    author: "Maria Santos",
+    role: "Working Mom",
+    company: "Dallas, TX",
   },
   {
-    quote: "Finally, a website that explains digital services without pushing products. The articles are genuinely helpful and easy to understand.",
-    author: "James Chen",
-    role: "Small Business Owner",
-    company: "Chen Designs",
+    quote: "I love how the articles are written in plain language. No fluff, just useful information I can apply right away.",
+    author: "Kevin Park",
+    role: "Entrepreneur",
+    company: "Seattle, WA",
   },
   {
-    quote: "I recommend Sulma to all my clients who need help navigating the world of subscriptions and digital tools.",
-    author: "Emily Rodriguez",
-    role: "Digital Consultant",
-    company: "TechPath Advisory",
+    quote: "The home organization tips transformed my living space. Sulma is now my go-to resource for lifestyle advice.",
+    author: "Rachel Green",
+    role: "Interior Designer",
+    company: "New York, NY",
   },
 ];
 
 const categories = [
-  { name: "Streaming", icon: Layers, count: 42, image: streamingServices },
-  { name: "Productivity", icon: Zap, count: 38, image: productivityApps },
-  { name: "Finance", icon: TrendingUp, count: 56, image: personalFinance },
-  { name: "Security", icon: Shield, count: 31, image: security },
+  { name: "Smart Home", icon: Layers, count: 45, image: smartHome },
+  { name: "Wellness", icon: Heart, count: 52, image: wellnessLifestyle },
+  { name: "Shopping", icon: Zap, count: 38, image: smartShopping },
+  { name: "Lifestyle", icon: Sparkles, count: 64, image: lifestyleHero },
 ];
 
 const benefits = [
@@ -251,7 +251,7 @@ const Index = () => {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
               >
                 <Sparkles className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-primary">Your Guide to Digital Discovery</span>
+                <span className="text-sm font-medium text-primary">Your Daily Life Companion</span>
               </motion.div>
 
               {/* Headline */}
@@ -261,8 +261,8 @@ const Index = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6"
               >
-                Trendy Articles For
-                <span className="block text-gradient mt-2">Daily Life</span>
+                Smart Tips For
+                <span className="block text-gradient mt-2">Better Living</span>
               </motion.h1>
               
               {/* Subtitle */}
@@ -272,8 +272,8 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10"
               >
-                Great trendy articles that will help you in daily life - from 
-                budgeting tips to smart shopping guides.
+                Discover practical guides on home, wellness, shopping, and lifestyle 
+                that make your everyday decisions easier and smarter.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -345,15 +345,15 @@ const Index = () => {
             <RevealSection>
               <div className="text-center max-w-2xl mx-auto mb-16">
                 <span className="text-primary text-sm font-semibold tracking-widest uppercase mb-4 block">
-                  What We Do
+                  How It Works
                 </span>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                  Helping You Make
-                  <span className="text-gradient ml-2">Informed Choices</span>
+                  Simple Steps to
+                  <span className="text-gradient ml-2">Smarter Choices</span>
                 </h2>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  We research, compare, and explain digital products and services so you can 
-                  decide what's right for you—without the marketing noise.
+                  We break down complex topics into clear, actionable insights 
+                  you can use right away in your everyday life.
                 </p>
               </div>
             </RevealSection>
@@ -392,21 +392,20 @@ const Index = () => {
                   Who This Is For
                 </span>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                  Built for Curious,
-                  <span className="text-gradient ml-2">Thoughtful Readers</span>
+                  Made for People Who
+                  <span className="text-gradient ml-2">Value Their Time</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  Whether you're exploring new streaming options, comparing productivity apps, 
-                  or trying to understand the latest digital trends—Sulma provides the clear, 
-                  honest information you need.
+                  Whether you're looking to upgrade your home, improve your wellness routine, 
+                  or find the best deals—Sulma gives you straight answers without the fluff.
                 </p>
                 
                 <div className="space-y-4">
                   {[
-                    "People tired of biased reviews and aggressive marketing",
-                    "Anyone comparing subscription services or digital tools",
-                    "Readers who value thorough research over quick sales pitches",
-                    "Those who want to understand before they commit"
+                    "Busy professionals seeking quick, actionable advice",
+                    "Homeowners looking for smart home and organization tips",
+                    "Health-conscious readers exploring wellness solutions",
+                    "Savvy shoppers who want honest product insights"
                   ].map((item, i) => (
                     <motion.div
                       key={i}
@@ -553,15 +552,15 @@ const Index = () => {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <RevealSection>
                 <span className="text-primary text-sm font-semibold tracking-widest uppercase mb-4 block">
-                  Why Sulma
+                  Why Choose Sulma
                 </span>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                  Information You Can
-                  <span className="text-gradient ml-2">Actually Trust</span>
+                  Real Advice for
+                  <span className="text-gradient ml-2">Real Life</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  In a world of sponsored content and affiliate-driven reviews, we focus on 
-                  delivering genuinely helpful information that serves readers first.
+                  We're not here to sell you anything. Our mission is to help you make 
+                  better decisions through honest, well-researched content.
                 </p>
 
                 <div className="space-y-5">
@@ -589,10 +588,10 @@ const Index = () => {
               <RevealSection delay={0.2}>
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { label: "Guides Published", value: "500+", color: "from-primary to-violet-400" },
-                    { label: "Topics Covered", value: "12+", color: "from-accent to-cyan-400" },
-                    { label: "Monthly Readers", value: "150K", color: "from-violet-500 to-purple-600" },
-                    { label: "Reader Rating", value: "4.8★", color: "from-pink-500 to-rose-400" },
+                    { label: "Articles Published", value: "600+", color: "from-primary to-violet-400" },
+                    { label: "Categories", value: "8+", color: "from-accent to-cyan-400" },
+                    { label: "Monthly Readers", value: "200K", color: "from-violet-500 to-purple-600" },
+                    { label: "Reader Rating", value: "4.9★", color: "from-pink-500 to-rose-400" },
                   ].map((stat, i) => (
                     <motion.div
                       key={stat.label}
