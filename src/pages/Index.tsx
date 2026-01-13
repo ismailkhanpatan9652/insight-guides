@@ -4,29 +4,30 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { articles } from "@/data/articles";
-import { motion, useScroll, useTransform, useSpring, useInView, useMotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import { 
   ArrowRight, 
   BookOpen, 
   Shield, 
-  Users, 
   TrendingUp, 
   Sparkles, 
   Globe,
   ChevronDown,
-  Star,
   Search,
-  Compass,
   Heart,
-  Award,
   CheckCircle2,
   Quote,
   Lightbulb,
   BadgeCheck,
   Layers,
-  FileText,
   Zap
 } from "lucide-react";
+
+// Import images for category cards
+import streamingServices from "@/assets/images/streaming-services.jpg";
+import productivityApps from "@/assets/images/productivity-apps.jpg";
+import personalFinance from "@/assets/images/personal-finance.jpg";
+import security from "@/assets/images/security.jpg";
 
 // ============= CONTENT DATA =============
 
@@ -80,10 +81,10 @@ const testimonials = [
 ];
 
 const categories = [
-  { name: "Streaming", icon: Layers, count: 42 },
-  { name: "Productivity", icon: Zap, count: 38 },
-  { name: "Finance", icon: TrendingUp, count: 56 },
-  { name: "Security", icon: Shield, count: 31 },
+  { name: "Streaming", icon: Layers, count: 42, image: streamingServices },
+  { name: "Productivity", icon: Zap, count: 38, image: productivityApps },
+  { name: "Finance", icon: TrendingUp, count: 56, image: personalFinance },
+  { name: "Security", icon: Shield, count: 31, image: security },
 ];
 
 const benefits = [
@@ -97,7 +98,7 @@ const benefits = [
     title: "Reader-First Approach", 
     desc: "Content designed to inform, not to sell—your trust matters most" 
   },
-  { 
+  {
     icon: Globe, 
     title: "Accessible to Everyone", 
     desc: "Clear, jargon-free writing that anyone can understand" 
@@ -432,13 +433,26 @@ const Index = () => {
                       transition={{ delay: 0.3 + i * 0.1 }}
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.03 }}
-                      className="p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all"
+                      className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/30 transition-all"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                        <cat.icon className="w-5 h-5 text-primary" />
+                      {/* Background image */}
+                      <div className="absolute inset-0">
+                        <img 
+                          src={cat.image} 
+                          alt={cat.name}
+                          className="w-full h-full object-cover opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/80 to-transparent" />
                       </div>
-                      <h3 className="font-semibold text-foreground mb-1">{cat.name}</h3>
-                      <p className="text-sm text-muted-foreground">{cat.count} guides</p>
+                      
+                      {/* Content */}
+                      <div className="relative p-6">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                          <cat.icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <h3 className="font-semibold text-foreground mb-1">{cat.name}</h3>
+                        <p className="text-sm text-muted-foreground">{cat.count} guides</p>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
