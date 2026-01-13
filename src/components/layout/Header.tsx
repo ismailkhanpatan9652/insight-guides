@@ -29,7 +29,7 @@ export function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center group">
           <span className="font-display text-xl font-semibold text-foreground">
-            Sranova
+            Sulma
           </span>
         </Link>
 
